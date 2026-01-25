@@ -3,7 +3,8 @@
 OUTPUT="index.html"
 INPUT="list.txt"
 
-cat <<EOF > $OUTPUT
+# HTML 상단 및 스타일 작성
+cat <<'EOF' > $OUTPUT
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +52,7 @@ cat <<EOF > $OUTPUT
             border-radius: 8px;
             border: 1px solid #333;
             transition: 0.2s;
-            /* text-transform: uppercase; <- 이 줄을 삭제하여 대소문자 유지 */
+            /* text-transform: uppercase; 삭제됨: 이제 대소문자 유지 */
         }
         .link-item:hover { background-color: #eee; color: #000; transform: translateY(-2px); }
         
@@ -75,22 +76,23 @@ cat <<EOF > $OUTPUT
     <div class="container">
 EOF
 
-# list.txt 한 줄씩 읽기
+# list.txt 한 줄씩 읽기 (대소문자 및 빈줄 처리)
 while IFS= read -r line || [[ -n "$line" ]]; do
     if [[ "$line" =~ ^# ]]; then
         continue
     elif [[ -z "$line" ]]; then
         echo "        <div class=\"spacer\"></div>" >> $OUTPUT
     else
-        # 대소문자 유지를 위해 원본 문자열을 분리
-        name=\$(echo "\$line" | awk '{print \$1}')
-        url=\$(echo "\$line" | awk '{print \$2}')
-        # target="_blank" 추가하여 새 창에서 열기 적용
-        echo "        <a href=\"\$url\" class=\"link-item\" target=\"_blank\" rel=\"noopener noreferrer\">\$name</a>" >> \$OUTPUT
+        # 첫 번째 공백을 기준으로 이름과 URL 분리
+        name=$(echo "$line" | awk '{print $1}')
+        url=$(echo "$line" | awk '{print $2}')
+        # 새 창 열기(_blank) 속성 추가
+        echo "        <a href=\"$url\" class=\"link-item\" target=\"_blank\" rel=\"noopener noreferrer\">$name</a>" >> $OUTPUT
     fi
-done < "\$INPUT"
+done < "$INPUT"
 
-cat <<EOF >> \$OUTPUT
+# 하단 자바스크립트 작성
+cat <<'EOF' >> $OUTPUT
     </div>
     <script>
         function updateClock() {
