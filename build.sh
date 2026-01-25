@@ -25,39 +25,55 @@ cat <<'EOF' > $OUTPUT
         }
         .header { text-align: center; margin-bottom: 30px; }
         #clock { font-size: 4rem; font-weight: 100; margin: 10px 0; letter-spacing: -2px; }
-        #date { font-size: 1.2rem; color: #888; text-transform: uppercase; letter-spacing: 2px; }
+        #date { 
+            font-size: 1.2rem; 
+            color: #888; 
+            letter-spacing: 1px;
+            /* text-transform: uppercase 제거하여 JS에서 설정한 포맷 유지 */
+        }
         #weather { font-size: 1rem; color: #aaa; margin-top: 15px; font-weight: 300; line-height: 1.4; }
 
+        /* 메인 및 섹션 공통 컨테이너 */
         .container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            align-content: center;
             gap: 15px;
-            width: 90%;
+            width: 100%;
             max-width: 700px;
+            margin: 0 auto;
         }
         
-        /* 접이식 섹션 스타일 */
+        /* 접이식 섹션 스타일 보정 */
         details {
             width: 100%;
+            max-width: 700px;
             margin-top: 20px;
-            text-align: center;
         }
         summary {
             cursor: pointer;
-            color: #666;
+            color: #555;
             font-size: 0.9rem;
-            list-style: none; /* 기본 화살표 숨기기 */
+            list-style: none;
             transition: 0.3s;
-            padding: 10px;
+            padding: 15px;
+            text-align: center;
+            user-select: none;
         }
         summary:hover { color: #fff; }
         summary::before { content: "+ "; }
         details[open] summary::before { content: "- "; }
 
+        /* 펼쳐졌을 때 내부 컨테이너 정렬 */
+        details .container {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
         .link-item {
-            flex: 1 1 140px;
-            max-width: 220px;
+            flex: 0 1 140px; /* 고정 너비 기반으로 정렬 유지 */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -70,14 +86,13 @@ cat <<'EOF' > $OUTPUT
             border-radius: 8px;
             border: 1px solid #333;
             transition: 0.2s;
-            margin: 7.5px; /* 컨테이너 안에서 간격 유지 */
         }
         .link-item:hover { background-color: #eee; color: #000; transform: translateY(-2px); }
         
         .spacer { flex-basis: 100%; height: 30px; }
 
         @media (max-width: 480px) {
-            .link-item { flex: 1 1 40%; }
+            .link-item { flex: 0 1 44%; }
             #clock { font-size: 3rem; }
         }
     </style>
@@ -97,12 +112,11 @@ while IFS= read -r line || [[ -n "$line" ]]; do
     if [[ "$line" =~ ^# ]]; then
         continue
     elif [[ "$line" =~ ^\> ]]; then
-        # '>'로 시작하면 접이식 섹션 시작
         if [ "$IN_DETAILS" = true ]; then
             echo "        </div></details>" >> $OUTPUT
         fi
         TITLE=$(echo "$line" | sed 's/^>//' | xargs)
-        echo "        <details><summary>$TITLE</summary><div class=\"container\" style=\"margin-top:10px;\">" >> $OUTPUT
+        echo "        <details><summary>$TITLE</summary><div class=\"container\">" >> $OUTPUT
         IN_DETAILS=true
     elif [[ -z "$line" ]]; then
         echo "        <div class=\"spacer\"></div>" >> $OUTPUT
@@ -113,7 +127,6 @@ while IFS= read -r line || [[ -n "$line" ]]; do
     fi
 done < "$INPUT"
 
-# 열려있는 details 태그 닫기
 if [ "$IN_DETAILS" = true ]; then
     echo "        </div></details>" >> $OUTPUT
 fi
@@ -127,6 +140,8 @@ cat <<'EOF' >> $OUTPUT
             const m = String(now.getMinutes()).padStart(2, '0');
             const s = String(now.getSeconds()).padStart(2, '0');
             document.getElementById('clock').textContent = h + ":" + m + ":" + s;
+            
+            // 앞글자만 대문자인 영어 날짜 형식 (예: Sunday, January 25, 2026)
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             document.getElementById('date').textContent = now.toLocaleDateString('en-US', options);
         }
