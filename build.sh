@@ -3,7 +3,6 @@
 OUTPUT="index.html"
 INPUT="list.txt"
 
-# HTML 상단 및 스타일 작성
 cat <<'EOF' > $OUTPUT
 <!DOCTYPE html>
 <html lang="en">
@@ -37,6 +36,25 @@ cat <<'EOF' > $OUTPUT
             width: 90%;
             max-width: 700px;
         }
+        
+        /* 접이식 섹션 스타일 */
+        details {
+            width: 100%;
+            margin-top: 20px;
+            text-align: center;
+        }
+        summary {
+            cursor: pointer;
+            color: #666;
+            font-size: 0.9rem;
+            list-style: none; /* 기본 화살표 숨기기 */
+            transition: 0.3s;
+            padding: 10px;
+        }
+        summary:hover { color: #fff; }
+        summary::before { content: "+ "; }
+        details[open] summary::before { content: "- "; }
+
         .link-item {
             flex: 1 1 140px;
             max-width: 220px;
@@ -52,14 +70,11 @@ cat <<'EOF' > $OUTPUT
             border-radius: 8px;
             border: 1px solid #333;
             transition: 0.2s;
-            /* text-transform: uppercase; 삭제됨: 이제 대소문자 유지 */
+            margin: 7.5px; /* 컨테이너 안에서 간격 유지 */
         }
         .link-item:hover { background-color: #eee; color: #000; transform: translateY(-2px); }
         
-        .spacer {
-            flex-basis: 100%;
-            height: 30px;
-        }
+        .spacer { flex-basis: 100%; height: 30px; }
 
         @media (max-width: 480px) {
             .link-item { flex: 1 1 40%; }
@@ -76,22 +91,33 @@ cat <<'EOF' > $OUTPUT
     <div class="container">
 EOF
 
-# list.txt 한 줄씩 읽기 (대소문자 및 빈줄 처리)
+IN_DETAILS=false
+
 while IFS= read -r line || [[ -n "$line" ]]; do
     if [[ "$line" =~ ^# ]]; then
         continue
+    elif [[ "$line" =~ ^\> ]]; then
+        # '>'로 시작하면 접이식 섹션 시작
+        if [ "$IN_DETAILS" = true ]; then
+            echo "        </div></details>" >> $OUTPUT
+        fi
+        TITLE=$(echo "$line" | sed 's/^>//' | xargs)
+        echo "        <details><summary>$TITLE</summary><div class=\"container\" style=\"margin-top:10px;\">" >> $OUTPUT
+        IN_DETAILS=true
     elif [[ -z "$line" ]]; then
         echo "        <div class=\"spacer\"></div>" >> $OUTPUT
     else
-        # 첫 번째 공백을 기준으로 이름과 URL 분리
         name=$(echo "$line" | awk '{print $1}')
         url=$(echo "$line" | awk '{print $2}')
-        # 새 창 열기(_blank) 속성 추가
         echo "        <a href=\"$url\" class=\"link-item\" target=\"_blank\" rel=\"noopener noreferrer\">$name</a>" >> $OUTPUT
     fi
 done < "$INPUT"
 
-# 하단 자바스크립트 작성
+# 열려있는 details 태그 닫기
+if [ "$IN_DETAILS" = true ]; then
+    echo "        </div></details>" >> $OUTPUT
+fi
+
 cat <<'EOF' >> $OUTPUT
     </div>
     <script>
