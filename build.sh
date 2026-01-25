@@ -37,7 +37,7 @@ cat <<EOF > $OUTPUT
             max-width: 700px;
         }
         .link-item {
-            flex: 1 1 140px; /* 기본 크기 140px, 공간 있으면 늘어남 */
+            flex: 1 1 140px;
             max-width: 220px;
             display: flex;
             justify-content: center;
@@ -46,19 +46,18 @@ cat <<EOF > $OUTPUT
             background-color: #1a1a1a;
             color: #fff;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 600;
             border-radius: 8px;
             border: 1px solid #333;
             transition: 0.2s;
-            text-transform: uppercase;
+            /* text-transform: uppercase; <- 이 줄을 삭제하여 대소문자 유지 */
         }
         .link-item:hover { background-color: #eee; color: #000; transform: translateY(-2px); }
         
-        /* 빈 줄(섹션 구분)을 위한 스타일 */
         .spacer {
             flex-basis: 100%;
-            height: 30px; /* 비어있는 줄의 높이 */
+            height: 30px;
         }
 
         @media (max-width: 480px) {
@@ -78,20 +77,20 @@ EOF
 
 # list.txt 한 줄씩 읽기
 while IFS= read -r line || [[ -n "$line" ]]; do
-    # 1. 주석 처리 (#으로 시작하는 줄 무시)
     if [[ "$line" =~ ^# ]]; then
         continue
-    # 2. 빈 줄 처리 (HTML에서 공간 비우기)
     elif [[ -z "$line" ]]; then
         echo "        <div class=\"spacer\"></div>" >> $OUTPUT
-    # 3. 정상 링크 처리
     else
-        read -r name url <<< "$line"
-        echo "        <a href=\"$url\" class=\"link-item\">$name</a>" >> $OUTPUT
+        # 대소문자 유지를 위해 원본 문자열을 분리
+        name=\$(echo "\$line" | awk '{print \$1}')
+        url=\$(echo "\$line" | awk '{print \$2}')
+        # target="_blank" 추가하여 새 창에서 열기 적용
+        echo "        <a href=\"\$url\" class=\"link-item\" target=\"_blank\" rel=\"noopener noreferrer\">\$name</a>" >> \$OUTPUT
     fi
-done < "$INPUT"
+done < "\$INPUT"
 
-cat <<EOF >> $OUTPUT
+cat <<EOF >> \$OUTPUT
     </div>
     <script>
         function updateClock() {
