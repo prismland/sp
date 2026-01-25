@@ -31,7 +31,7 @@
             max-width: 700px;
         }
         .link-item {
-            flex: 1 1 140px; /* 기본 크기 140px, 공간 있으면 늘어남 */
+            flex: 1 1 140px;
             max-width: 220px;
             display: flex;
             justify-content: center;
@@ -40,19 +40,18 @@
             background-color: #1a1a1a;
             color: #fff;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 600;
             border-radius: 8px;
             border: 1px solid #333;
             transition: 0.2s;
-            text-transform: uppercase;
+            /* text-transform: uppercase; 삭제됨: 이제 대소문자 유지 */
         }
         .link-item:hover { background-color: #eee; color: #000; transform: translateY(-2px); }
         
-        /* 빈 줄(섹션 구분)을 위한 스타일 */
         .spacer {
             flex-basis: 100%;
-            height: 30px; /* 비어있는 줄의 높이 */
+            height: 30px;
         }
 
         @media (max-width: 480px) {
@@ -68,31 +67,31 @@
         <div id="weather">Loading weather...</div>
     </div>
     <div class="container">
-        <a href="https://www.youtube.com/" class="link-item">YouTube</a>
-        <a href="https://tvwiki4.net/" class="link-item">TVwiki</a>
-        <a href="https://www.weather.go.kr/w/index.do#dong/4817074000/35.156944/128.10883/%EA%B2%BD%EC%83%81%EB%82%A8%EB%8F%84%20%EC%A7%84%EC%A3%BC%EC%8B%9C%20%EA%B0%80%ED%98%B8%EB%8F%99/SEL/%EA%B0%80%ED%98%B8%EB%8F%99" class="link-item">Weather</a>
-        <a href="https://namu.wiki/w/%EB%82%98%EB%AC%B4%EC%9C%84%ED%82%A4:%EB%8C%80%EB%AC%B8" class="link-item">NamuWiki</a>
-        <a href="https://search.naver.com/search.naver?where=nexearch&sm=top_sly.hst&fbm=0&acr=1&ie=utf8&query=TV%ED%8E%B8%EC%84%B1%ED%91%9C&ackey=hedwulm9" class="link-item">TV</a>
-        <a href="https://mail.naver.com/v2/folders/-1/unread" class="link-item">Mail</a>
-        <a href="https://cafe.naver.com/joonggonara" class="link-item">Joonggonara</a>
-        <a href="https://gemini.google.com/app" class="link-item">Gemini</a>
-        <a href="https://papago.naver.com/?sk=auto&tk=ko" class="link-item">Pagago</a>
-        <a href="https://m.sports.naver.com/scoreboard/index" class="link-item">ScoreBoard</a>
-        <a href="https://www.hulk24.com/broad.php" class="link-item">BroadCast</a>
-        <a href="https://gall.dcinside.com/mgallery/board/lists/?id=linux" class="link-item">DCI</a>
-        <a href="https://www.fmkorea.com/" class="link-item">FMK</a>
+        <a href="https://www.youtube.com/" class="link-item" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="https://tvwiki4.net/" class="link-item" target="_blank" rel="noopener noreferrer">TVwiki</a>
+        <a href="https://www.weather.go.kr/w/index.do#dong/4817074000/35.156944/128.10883/%EA%B2%BD%EC%83%81%EB%82%A8%EB%8F%84%20%EC%A7%84%EC%A3%BC%EC%8B%9C%20%EA%B0%80%ED%98%B8%EB%8F%99/SEL/%EA%B0%80%ED%98%B8%EB%8F%99" class="link-item" target="_blank" rel="noopener noreferrer">Weather</a>
+        <a href="https://namu.wiki/w/%EB%82%98%EB%AC%B4%EC%9C%84%ED%82%A4:%EB%8C%80%EB%AC%B8" class="link-item" target="_blank" rel="noopener noreferrer">NamuWiki</a>
+        <a href="https://search.naver.com/search.naver?where=nexearch&sm=top_sly.hst&fbm=0&acr=1&ie=utf8&query=TV%ED%8E%B8%EC%84%B1%ED%91%9C&ackey=hedwulm9" class="link-item" target="_blank" rel="noopener noreferrer">TV</a>
+        <a href="https://mail.naver.com/v2/folders/-1/unread" class="link-item" target="_blank" rel="noopener noreferrer">Mail</a>
+        <a href="https://cafe.naver.com/joonggonara" class="link-item" target="_blank" rel="noopener noreferrer">Joonggonara</a>
+        <a href="https://gemini.google.com/app" class="link-item" target="_blank" rel="noopener noreferrer">Gemini</a>
+        <a href="https://papago.naver.com/?sk=auto&tk=ko" class="link-item" target="_blank" rel="noopener noreferrer">Pagago</a>
+        <a href="https://m.sports.naver.com/scoreboard/index" class="link-item" target="_blank" rel="noopener noreferrer">ScoreBoard</a>
+        <a href="https://www.hulk24.com/broad.php" class="link-item" target="_blank" rel="noopener noreferrer">BroadCast</a>
+        <a href="https://gall.dcinside.com/mgallery/board/lists/?id=linux" class="link-item" target="_blank" rel="noopener noreferrer">DCI</a>
+        <a href="https://www.fmkorea.com/" class="link-item" target="_blank" rel="noopener noreferrer">FMK</a>
         <div class="spacer"></div>
-        <a href="https://kr40.topgirl.co/video/category/JAV-2026" class="link-item">TG</a>
-        <a href="https://kr84.sogirl.so/" class="link-item">SG</a>
-        <a href="https://1av.to/ko/dm9" class="link-item">12</a>
-        <a href="https://kr8.ddal.xyz/video/category/onlyfans" class="link-item">DD</a>
-        <a href="https://javdb.com/censored" class="link-item">JD</a>
-        <a href="https://www.avdbs.com/" class="link-item">DB</a>
-        <a href="http://www.playno1.com/portal.php?mod=list&catid=78" class="link-item">P1</a>
-        <a href="https://onejav.com/" class="link-item">OJ</a>
-        <a href="https://www.nanojav.com/" class="link-item">Nj</a>
-        <a href="https://today-sports7.com/bbs/board.php?bo_table=AI" class="link-item">AI</a>
-        <a href="https://1004ak.com/" class="link-item">14</a>
+        <a href="https://kr40.topgirl.co/video/category/JAV-2026" class="link-item" target="_blank" rel="noopener noreferrer">TG</a>
+        <a href="https://kr84.sogirl.so/" class="link-item" target="_blank" rel="noopener noreferrer">SG</a>
+        <a href="https://1av.to/ko/dm9" class="link-item" target="_blank" rel="noopener noreferrer">12</a>
+        <a href="https://kr8.ddal.xyz/video/category/onlyfans" class="link-item" target="_blank" rel="noopener noreferrer">DD</a>
+        <a href="https://javdb.com/censored" class="link-item" target="_blank" rel="noopener noreferrer">JD</a>
+        <a href="https://www.avdbs.com/" class="link-item" target="_blank" rel="noopener noreferrer">DB</a>
+        <a href="http://www.playno1.com/portal.php?mod=list&catid=78" class="link-item" target="_blank" rel="noopener noreferrer">P1</a>
+        <a href="https://onejav.com/" class="link-item" target="_blank" rel="noopener noreferrer">OJ</a>
+        <a href="https://www.nanojav.com/" class="link-item" target="_blank" rel="noopener noreferrer">Nj</a>
+        <a href="https://today-sports7.com/bbs/board.php?bo_table=AI" class="link-item" target="_blank" rel="noopener noreferrer">AI</a>
+        <a href="https://1004ak.com/" class="link-item" target="_blank" rel="noopener noreferrer">14</a>
     </div>
     <script>
         function updateClock() {
