@@ -42,13 +42,15 @@ cat <<EOF > $OUTPUT
             letter-spacing: 2px;
         }
 
-        #weather {
-            font-size: 1.1rem;
+#weather {
+            font-size: 1rem; /* 정보가 많으므로 크기를 살짝 줄임 */
             color: #aaa;
             margin-top: 15px;
             font-weight: 300;
+            line-height: 1.4;
+            word-break: keep-all; /* 단어 단위 줄바꿈 */
         }
-
+        
         .container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -120,13 +122,13 @@ cat <<EOF >> $OUTPUT
         }
 
 // wttr.in을 이용한 날씨 가져오기 (이모지 아이콘 포함)
-        async function updateWeather() {
+async function updateWeather() {
             try {
-                // %c: 날씨 아이콘(이모지), %t: 온도
-                const response = await fetch('https://wttr.in/Jinju?format=%c+%t');
+                // ?m: 미터법(m/s) 사용
+                // %c: 이모지, %C: 상태텍스트, %t: 온도, %f: 체감온도, %w: 풍속
+                const response = await fetch('https://wttr.in/Jinju?m&format=%c+%C+%t+(Feels+%f)+%w');
                 const data = await response.text();
                 
-                // 데이터가 비어있지 않은지 확인 후 표시
                 if (data.trim()) {
                     document.getElementById('weather').textContent = "Jinju: " + data;
                 } else {
