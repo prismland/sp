@@ -21,45 +21,24 @@ cat <<EOF > $OUTPUT
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+            padding: 20px 0;
         }
+        .header { text-align: center; margin-bottom: 30px; }
+        #clock { font-size: 4rem; font-weight: 100; margin: 10px 0; letter-spacing: -2px; }
+        #date { font-size: 1.2rem; color: #888; text-transform: uppercase; letter-spacing: 2px; }
+        #weather { font-size: 1rem; color: #aaa; margin-top: 15px; font-weight: 300; line-height: 1.4; }
 
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        #clock {
-            font-size: 4rem;
-            font-weight: 100;
-            margin: 10px 0;
-            letter-spacing: -2px;
-        }
-
-        #date {
-            font-size: 1.2rem;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-#weather {
-            font-size: 1rem; /* 정보가 많으므로 크기를 살짝 줄임 */
-            color: #aaa;
-            margin-top: 15px;
-            font-weight: 300;
-            line-height: 1.4;
-            word-break: keep-all; /* 단어 단위 줄바꿈 */
-        }
-        
         .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 15px;
             width: 90%;
             max-width: 700px;
         }
-
         .link-item {
+            flex: 1 1 140px; /* 기본 크기 140px, 공간 있으면 늘어남 */
+            max-width: 220px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -74,75 +53,66 @@ cat <<EOF > $OUTPUT
             transition: 0.2s;
             text-transform: uppercase;
         }
-
-        .link-item:hover {
-            background-color: #eee;
-            color: #000;
-            transform: translateY(-2px);
+        .link-item:hover { background-color: #eee; color: #000; transform: translateY(-2px); }
+        
+        /* 빈 줄(섹션 구분)을 위한 스타일 */
+        .spacer {
+            flex-basis: 100%;
+            height: 30px; /* 비어있는 줄의 높이 */
         }
 
         @media (max-width: 480px) {
-            .container { grid-template-columns: repeat(2, 1fr); }
+            .link-item { flex: 1 1 40%; }
             #clock { font-size: 3rem; }
         }
     </style>
 </head>
 <body>
-
     <div class="header">
         <div id="date"></div>
         <div id="clock">00:00:00</div>
         <div id="weather">Loading weather...</div>
     </div>
-
     <div class="container">
 EOF
 
-while read -r name url; do
-    [[ -z "$name" || "$name" == "#"* ]] && continue
-    echo "        <a href=\"$url\" class=\"link-item\">$name</a>" >> $OUTPUT
+# list.txt 한 줄씩 읽기
+while IFS= read -r line || [[ -n "$line" ]]; do
+    # 1. 주석 처리 (#으로 시작하는 줄 무시)
+    if [[ "$line" =~ ^# ]]; then
+        continue
+    # 2. 빈 줄 처리 (HTML에서 공간 비우기)
+    elif [[ -z "$line" ]]; then
+        echo "        <div class=\"spacer\"></div>" >> $OUTPUT
+    # 3. 정상 링크 처리
+    else
+        read -r name url <<< "$line"
+        echo "        <a href=\"$url\" class=\"link-item\">$name</a>" >> $OUTPUT
+    fi
 done < "$INPUT"
 
 cat <<EOF >> $OUTPUT
     </div>
-
     <script>
         function updateClock() {
             const now = new Date();
-            
-            // 시간 표시 (24시간 형식)
             const h = String(now.getHours()).padStart(2, '0');
             const m = String(now.getMinutes()).padStart(2, '0');
             const s = String(now.getSeconds()).padStart(2, '0');
             document.getElementById('clock').textContent = h + ":" + m + ":" + s;
-            
-            // 영어 Full Format 날짜 (예: Sunday, January 25, 2026)
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             document.getElementById('date').textContent = now.toLocaleDateString('en-US', options);
         }
-
-// wttr.in을 이용한 날씨 가져오기 (이모지 아이콘 포함)
-async function updateWeather() {
+        async function updateWeather() {
             try {
-                // ?m: 미터법(m/s) 사용
-                // %c: 이모지, %C: 상태텍스트, %t: 온도, %f: 체감온도, %w: 풍속
                 const response = await fetch('https://wttr.in/Jinju?m&format=%c+%C+%t+(Feels+%f)+%w');
                 const data = await response.text();
-                
-                if (data.trim()) {
-                    document.getElementById('weather').textContent = "Jinju: " + data;
-                } else {
-                    throw new Error("Empty data");
-                }
-            } catch (error) {
-                document.getElementById('weather').textContent = "Weather unavailable";
-            }
+                document.getElementById('weather').textContent = "Jinju: " + data;
+            } catch (e) { document.getElementById('weather').textContent = "Weather unavailable"; }
         }
-        
         setInterval(updateClock, 1000);
         updateClock();
         updateWeather();
-        // 날씨는 30분마다 업데이트
         setInterval(updateWeather, 1800000);
     </script>
 </body>
