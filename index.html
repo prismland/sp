@@ -6,76 +6,130 @@
     <title>My Dashboard</title>
     <style>
         body {
-            background-color: #0f0f0f; /* 깊은 검정 */
+            background-color: #0f0f0f;
             color: #efefef;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             margin: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             min-height: 100vh;
         }
+
+        /* 상단 정보 영역 (시계 & 날씨) */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        #clock {
+            font-size: 3.5rem;
+            font-weight: 200;
+            margin: 0;
+        }
+        #date {
+            font-size: 1.2rem;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        .weather-container {
+            margin-top: 10px;
+            border-radius: 15px;
+            overflow: hidden;
+            opacity: 0.8;
+        }
+
+        /* 링크 그리드 영역 */
         .container {
             display: grid;
-            /* 화면 너비에 따라 자동으로 칸 조절 (최소 120px) */
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 20px;
+            gap: 15px;
             width: 90%;
-            max-width: 800px;
-            padding: 40px;
+            max-width: 600px;
         }
         .link-item {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 80px;
-            background-color: #1a1a1a; /* 카드 배경 */
+            height: 70px;
+            background-color: #1a1a1a;
             color: #ffffff;
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             border-radius: 12px;
             border: 1px solid #333;
-            transition: all 0.2s ease-in-out;
-            text-transform: uppercase; /* 대문자로 세련되게 */
+            transition: all 0.2s;
+            text-transform: uppercase;
         }
         .link-item:hover {
             background-color: #333;
-            border-color: #555;
-            transform: translateY(-5px); /* 위로 살짝 들림 */
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
         @media (max-width: 480px) {
-            .container { grid-template-columns: repeat(2, 1fr); } /* 모바일은 2열 */
+            .container { grid-template-columns: repeat(2, 1fr); }
+            #clock { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
+
+    <div class="header">
+        <p id="date"></p>
+        <h1 id="clock">00:00:00</h1>
+        
+        <div class="weather-container">
+            <a class="weatherwidget-io" href="https://weatherwidget.io/w/412662/jinju/" data-label_1="JINJU" data-label_2="WEATHER" data-font="Roboto" data-icons="Climacons Animated" data-theme="pure" data-basecolor="#0f0f0f" data-accent="rgba(255, 255, 255, 0)" data-textcolor="#ffffff" >JINJU WEATHER</a>
+            <script>
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+            </script>
+        </div>
+    </div>
+
     <div class="container">
         <a href="https://www.youtube.com/" class="link-item">yt</a>
+        <a href="https://tvwiki4.net/" class="link-item">tw</a>
+        <a href="https://www.weather.go.kr/w/index.do#dong/4817074000/35.156944/128.10883/%EA%B2%BD%EC%83%81%EB%82%A8%EB%8F%84%20%EC%A7%84%EC%A3%BC%EC%8B%9C%20%EA%B0%80%ED%98%B8%EB%8F%99/SEL/%EA%B0%80%ED%98%B8%EB%8F%99" class="link-item">wt</a>
         <a href="https://namu.wiki/w/%EB%82%98%EB%AC%B4%EC%9C%84%ED%82%A4:%EB%8C%80%EB%AC%B8" class="link-item">nm</a>
         <a href="https://search.naver.com/search.naver?where=nexearch&sm=top_sly.hst&fbm=0&acr=1&ie=utf8&query=TV%ED%8E%B8%EC%84%B1%ED%91%9C&ackey=hedwulm9" class="link-item">tv</a>
         <a href="https://mail.naver.com/v2/folders/-1/unread" class="link-item">mi</a>
         <a href="https://cafe.naver.com/joonggonara" class="link-item">jn</a>
-        <a href="https://www.hulk24.com/broad.php" class="link-item">hk</a>
-        <a href="https://1av.to/ko/dm9" class="link-item">12</a>
-        <a href="https://tvwiki4.net/" class="link-item">tw</a>
-        <a href="https://kr40.topgirl.co/video/category/JAV-2026" class="link-item">tg</a>
-        <a href="https://kr8.ddal.xyz/video/category/onlyfans" class="link-item">dd</a>
-        <a href="https://1004ak.com/" class="link-item">14</a>
         <a href="https://gemini.google.com/app" class="link-item">gn</a>
-        <a href="https://www.weather.go.kr/w/index.do#dong/4817074000/35.156944/128.10883/%EA%B2%BD%EC%83%81%EB%82%A8%EB%8F%84%20%EC%A7%84%EC%A3%BC%EC%8B%9C%20%EA%B0%80%ED%98%B8%EB%8F%99/SEL/%EA%B0%80%ED%98%B8%EB%8F%99" class="link-item">wt</a>
-        <a href="https://m.sports.naver.com/scoreboard/index" class="link-item">sb</a>
         <a href="https://papago.naver.com/?sk=auto&tk=ko" class="link-item">pg</a>
-        <a href="https://onejav.com/" class="link-item">oj</a>
-        <a href="https://www.nanojav.com/" class="link-item">nj</a>
-        <a href="https://www.avdbs.com/" class="link-item">db</a>
-        <a href="https://javdb.com/censored" class="link-item">jd</a>
+        <a href="https://m.sports.naver.com/scoreboard/index" class="link-item">sb</a>
+        <a href="https://www.hulk24.com/broad.php" class="link-item">hk</a>
         <a href="https://gall.dcinside.com/mgallery/board/lists/?id=linux" class="link-item">dc</a>
         <a href="https://www.fmkorea.com/" class="link-item">fk</a>
+        <a href="https://kr40.topgirl.co/video/category/JAV-2026" class="link-item">tg</a>
         <a href="https://kr84.sogirl.so/" class="link-item">sg</a>
-        <a href="https://today-sports7.com/bbs/board.php?bo_table=AI" class="link-item">ai</a>
+        <a href="https://1av.to/ko/dm9" class="link-item">12</a>
+        <a href="https://kr8.ddal.xyz/video/category/onlyfans" class="link-item">dd</a>
+        <a href="https://javdb.com/censored" class="link-item">jd</a>
+        <a href="https://www.avdbs.com/" class="link-item">db</a>
         <a href="http://www.playno1.com/portal.php?mod=list&catid=78" class="link-item">p1</a>
+        <a href="https://onejav.com/" class="link-item">oj</a>
+        <a href="https://www.nanojav.com/" class="link-item">nj</a>
+        <a href="https://today-sports7.com/bbs/board.php?bo_table=AI" class="link-item">ai</a>
+        <a href="https://1004ak.com/" class="link-item">14</a>
     </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            
+            // 시간 표시
+            const h = String(now.getHours()).padStart(2, '0');
+            const m = String(now.getMinutes()).padStart(2, '0');
+            const s = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+            
+            // 날짜 표시
+            const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+            document.getElementById('date').textContent = now.toLocaleDateString('ko-KR', options);
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
 </body>
 </html>
