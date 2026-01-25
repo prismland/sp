@@ -119,18 +119,24 @@ cat <<EOF >> $OUTPUT
             document.getElementById('date').textContent = now.toLocaleDateString('en-US', options);
         }
 
-        // wttr.in을 이용한 텍스트 날씨 가져오기 (진주)
+// wttr.in을 이용한 날씨 가져오기 (이모지 아이콘 포함)
         async function updateWeather() {
             try {
-                // 진주시 날씨를 한 줄 텍스트 형식으로 요청
-                const response = await fetch('https://wttr.in/Jinju?format=%C+%t');
+                // %c: 날씨 아이콘(이모지), %t: 온도
+                const response = await fetch('https://wttr.in/Jinju?format=%c+%t');
                 const data = await response.text();
-                document.getElementById('weather').textContent = "Jinju: " + data;
+                
+                // 데이터가 비어있지 않은지 확인 후 표시
+                if (data.trim()) {
+                    document.getElementById('weather').textContent = "Jinju: " + data;
+                } else {
+                    throw new Error("Empty data");
+                }
             } catch (error) {
                 document.getElementById('weather').textContent = "Weather unavailable";
             }
         }
-
+        
         setInterval(updateClock, 1000);
         updateClock();
         updateWeather();
