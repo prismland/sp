@@ -2,10 +2,8 @@ name: Update Start Page
 
 on:
   push:
-    paths:
-      - 'list.txt'  # list.txt가 수정될 때만 실행
     branches:
-      - main
+      - main  # 메인 브랜치에 어떤 변경사항이라도 생기면 실행
 
 permissions:
   contents: write
@@ -27,5 +25,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git commit -m "Update index.html from list.txt" || echo "No changes to commit"
+          # 변경사항이 없어도 오류로 처리하지 않음
+          git commit -m "Automated build" || exit 0 
           git push
