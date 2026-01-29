@@ -1,4 +1,5 @@
 YouTube https://www.youtube.com/
+#NaverTV https://tv.naver.com/
 VOD https://tvwiki5.net/
 Broadcast https://www.hulk24.com/broad.php
 Table https://search.naver.com/search.naver?where=nexearch&sm=top_sly.hst&fbm=0&acr=1&ie=utf8&query=TV%ED%8E%B8%EC%84%B1%ED%91%9C&ackey=hedwulm9
@@ -22,18 +23,20 @@ E-Mail https://mail.naver.com/v2/folders/-1/unread
 ComEdu https://cafe.daum.net/swncomedu
 #ComEdu https://cafe.daum.net/inforedu
 #ComEdu https://cafe.daum.net/edurhi
+#Pedagogy https://cafe.
 Lecture https://www.g-school.co.kr/lecture/lectureTeacherIntro.jsp?teacher_code=TAC20250729104640822
 #Lecture https://www.imyonggosi.com/
 #Lecture https://www.gosiro-q.co.kr/App/Lecture/?glt_id=GLT_100416172516
 Library https://lib.gnu.ac.kr/#/
-#Library https://jinlib.gne.go.kr/index.es?sid=b4
 #Library https://lib.jinju.go.kr/front/
+#Library https://jinlib.gne.go.kr/index.es?sid=b4
+#Library https://lib.mokwon.ac.kr/
 #NationalNotice https://www.gosi.kr/
 #NationalRecruit https://gongmuwon.gosi.kr/intro.do
+#LocalNotice https://www.gyeongnam.go.kr/board/list.gyeong?boardId=BBS_0000244&menuCd=DOM_000000135004001000&contentsSid=7068&cpath=
+#LocalRecruit https://local.gosi.go.kr/klid/main/main.do
 #EducationalNotice https://www.gne.go.kr/user/bbs/BD_selectBbsList.do?q_bbsSn=1251
 #EducationalRecruit https://edurecruit.go.kr/nxui/index.html
-#LocalNotice https://www.gyeongnam.go.kr/board/list.gyeong?boardId=BBS_0000244&menuCd=DOM_000000135004001000&contentsSid=7068&cpath=
-#LocalRecruit 
 E-Book https://ridibooks.com/ebook/recommendation
 Cartoon https://manatoki469.net/
 Webtoon https://newtoki469.com/
@@ -49,6 +52,7 @@ JinjuFC http://jinjufc.co.kr/
 Basketball https://kbl.or.kr/
 LGSakers https://sakers.kbl.or.kr/
 DCI https://gall.dcinside.com/mgallery/board/lists/?id=linux
+#Damoang https://damoang.net/linux
 FMK https://www.fmkorea.com/
 
 > ...
