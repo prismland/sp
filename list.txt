@@ -22,6 +22,15 @@ ComEdu https://cafe.daum.net/swncomedu
 Lecture https://www.g-school.co.kr/lecture/lectureTeacherIntro.jsp?teacher_code=TAC20250729104640822
 #Lecture https://www.imyonggosi.com/
 #Lecture https://www.gosiro-q.co.kr/App/Lecture/?glt_id=GLT_100416172516
+Library https://lib.gnu.ac.kr/#/
+#Library https://jinlib.gne.go.kr/index.es?sid=b4
+#Library https://lib.jinju.go.kr/front/
+#NationalNotice https://www.gosi.kr/
+#NationalRecruit https://gongmuwon.gosi.kr/intro.do
+#EducationalNotice https://www.gne.go.kr/user/bbs/BD_selectBbsList.do?q_bbsSn=1251
+#EducationalRecruit https://edurecruit.go.kr/nxui/index.html
+#LocalNotice https://www.gyeongnam.go.kr/board/list.gyeong?boardId=BBS_0000244&menuCd=DOM_000000135004001000&contentsSid=7068&cpath=
+#LocalRecruit 
 E-Book https://ridibooks.com/ebook/recommendation
 Cartoon https://manatoki469.net/
 Webtoon https://newtoki469.com/
