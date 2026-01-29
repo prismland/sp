@@ -27,7 +27,12 @@ Music https://www.genie.co.kr/
 iChart https://ichart.kr/
 WUK https://www.withukor.com/schedule
 Baseball https://www.koreabaseball.com/default.aspx
+NCDinos https://www.ncdinos.com/
+Football https://www.kleague.com/schedule.do?leagueId=2
+GyeongnamFC https://www.gyeongnamfc.com/
 JinjuFC http://jinjufc.co.kr/
+Basketball https://kbl.or.kr/
+LGSakers https://sakers.kbl.or.kr/
 DCI https://gall.dcinside.com/mgallery/board/lists/?id=linux
 FMK https://www.fmkorea.com/
 
