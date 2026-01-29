@@ -13,6 +13,7 @@ Translator https://papago.naver.com/?sk=auto&tk=ko
 Mail https://mail.naver.com/v2/folders/-1/unread
 ComEdu https://cafe.daum.net/swncomedu
 E-Book https://ridibooks.com/ebook/recommendation
+GitHub https://github.com/prismland
 Used https://cafe.naver.com/joonggonara
 DCI https://gall.dcinside.com/mgallery/board/lists/?id=linux
 FMK https://www.fmkorea.com/
@@ -30,7 +31,9 @@ DB https://www.avdbs.com/
 DY https://avdanyuwiki.com/tag/yuduru/
 P1 http://www.playno1.com/portal.php?mod=list&catid=78
 JT https://javtrailers.com/videos
+AG https://avgosu91.com/
 OJ https://onejav.com/
 NJ https://www.nanojav.com/
+ST https://subtitlecat.com/
 AI https://today-sports7.com/bbs/board.php?bo_table=AI
 14 https://1004ak.com/
