@@ -4,6 +4,7 @@ Broadcast https://www.hulk24.com/broad.php
 Table https://search.naver.com/search.naver?where=nexearch&sm=top_sly.hst&fbm=0&acr=1&ie=utf8&query=TV%ED%8E%B8%EC%84%B1%ED%91%9C&ackey=hedwulm9
 ScoreBoard https://m.sports.naver.com/scoreboard/index
 News https://news.daum.net/world
+#Google https://news.google.com/home?hl=ko&gl=KR&ceid=KR:ko
 MSN https://www.msn.com/ko-kr?ocid=wn_startbrowsing
 HotNow https://arca.live/b/namuhotnow/
 Weather https://www.weather.go.kr/w/index.do#dong/4817074000/35.156944/128.10883/%EA%B2%BD%EC%83%81%EB%82%A8%EB%8F%84%20%EC%A7%84%EC%A3%BC%EC%8B%9C%20%EA%B0%80%ED%98%B8%EB%8F%99/SEL/%EA%B0%80%ED%98%B8%EB%8F%99
@@ -15,10 +16,12 @@ GAI https://gemini.google.com/app
 #GAI https://chatgpt.com/
 GitHub https://github.com/prismland
 Translator https://papago.naver.com/?sk=auto&tk=ko
-Mail https://mail.naver.com/v2/folders/-1/unread
-#Mail https://mail.google.com/mail/u/0/#inbox
+E-Mail https://mail.naver.com/v2/folders/-1/unread
+#E-Mail https://mail.google.com/mail/u/0/#inbox
+#E-Mail https://mail.daum.net/top/INBOX
 ComEdu https://cafe.daum.net/swncomedu
 #ComEdu https://cafe.daum.net/inforedu
+#ComEdu https://cafe.daum.net/edurhi
 Lecture https://www.g-school.co.kr/lecture/lectureTeacherIntro.jsp?teacher_code=TAC20250729104640822
 #Lecture https://www.imyonggosi.com/
 #Lecture https://www.gosiro-q.co.kr/App/Lecture/?glt_id=GLT_100416172516
