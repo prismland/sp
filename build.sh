@@ -29,11 +29,9 @@ cat <<'EOF' > $OUTPUT
             font-size: 1.2rem; 
             color: #888; 
             letter-spacing: 1px;
-            /* text-transform: uppercase 제거하여 JS에서 설정한 포맷 유지 */
         }
         #weather { font-size: 1rem; color: #aaa; margin-top: 15px; font-weight: 300; line-height: 1.4; }
 
-        /* 메인 및 섹션 공통 컨테이너 */
         .container {
             display: flex;
             flex-wrap: wrap;
@@ -45,7 +43,6 @@ cat <<'EOF' > $OUTPUT
             margin: 0 auto;
         }
         
-        /* 접이식 섹션 스타일 보정 */
         details {
             width: 100%;
             max-width: 700px;
@@ -65,7 +62,6 @@ cat <<'EOF' > $OUTPUT
         summary::before { content: "+ "; }
         details[open] summary::before { content: "- "; }
 
-        /* 펼쳐졌을 때 내부 컨테이너 정렬 */
         details .container {
             display: flex;
             justify-content: center;
@@ -73,7 +69,7 @@ cat <<'EOF' > $OUTPUT
         }
 
         .link-item {
-            flex: 0 1 140px; /* 고정 너비 기반으로 정렬 유지 */
+            flex: 0 1 140px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -140,18 +136,30 @@ cat <<'EOF' >> $OUTPUT
             const m = String(now.getMinutes()).padStart(2, '0');
             const s = String(now.getSeconds()).padStart(2, '0');
             document.getElementById('clock').textContent = h + ":" + m + ":" + s;
-            
-            // 앞글자만 대문자인 영어 날짜 형식 (예: Sunday, January 25, 2026)
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             document.getElementById('date').textContent = now.toLocaleDateString('en-US', options);
         }
+
         async function updateWeather() {
             try {
-                const response = await fetch('https://wttr.in/Jinju?m&format=%c+%C+%t+(Feels+%f)+%w');
-                const data = await response.text();
+                // 풍향 기호(%w)를 제외한 핵심 정보만 먼저 가져옴
+                // %c(아이콘) %C(상태) %t(온도) %f(체감) %w(풍속/풍향)
+                const response = await fetch('https://wttr.in/Jinju?format=%c+%C+%t+(Feels+%f)+%w');
+                let data = await response.text();
+
+                // km/h 단위를 찾아서 m/s로 변환하는 정규식 로직
+                // 예: "15km/h" -> "4.2m/s"
+                data = data.replace(/([0-9.]+)\s*km\/h/g, function(match, p1) {
+                    const ms = (parseFloat(p1) / 3.6).toFixed(1);
+                    return ms + "m/s";
+                });
+
                 document.getElementById('weather').textContent = "Jinju: " + data;
-            } catch (e) { document.getElementById('weather').textContent = "Weather unavailable"; }
+            } catch (e) { 
+                document.getElementById('weather').textContent = "Weather unavailable"; 
+            }
         }
+
         setInterval(updateClock, 1000);
         updateClock();
         updateWeather();
