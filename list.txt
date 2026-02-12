@@ -44,6 +44,7 @@ Used[L] https://cafe.naver.com/joonggonara
 Music[L] https://www.genie.co.kr/
 iChart https://ichart.kr/
 WUK https://www.withukor.com/schedule
+Lotto https://www.dhlottery.co.kr/main
 Baseball https://www.koreabaseball.com/default.aspx
 NCDinos https://www.ncdinos.com/
 Football https://www.kleague.com/schedule.do?leagueId=2
