@@ -9,7 +9,11 @@ ScoreBoard https://m.sports.naver.com/scoreboard/index
 #ScoreBoard https://sports.news.naver.com/scoreboard/index.nhn
 News https://news.daum.net/world
 #Google https://news.google.com/home?hl=ko&gl=KR&ceid=KR:ko
+#Google https://news.google.com/foryou?hl=ko&gl=KR&ceid=KR:ko
 MSN https://www.msn.com/ko-kr?ocid=wn_startbrowsing
+#MSN https://www.msn.com/ko-kr/feed?ocid=wn_startbrowsing
+#MSN https://www.msn.com/ko-kr/feed?ocid=winp1taskbar&cvid=dabec34665064328a028ecebbfbc78b8
+#MSN https://www.msn.com/ko-kr/news
 HotNow https://arca.live/b/namuhotnow/
 Weather https://www.weather.go.kr/w/index.do#dong/4817074000/35.156944/128.10883/%EA%B2%BD%EC%83%81%EB%82%A8%EB%8F%84%20%EC%A7%84%EC%A3%BC%EC%8B%9C%20%EA%B0%80%ED%98%B8%EB%8F%99/SEL/%EA%B0%80%ED%98%B8%EB%8F%99
 #Weather https://www.weather.go.kr/w/index.do
@@ -18,11 +22,23 @@ Wiki https://namu.wiki/w/%EB%82%98%EB%AC%B4%EC%9C%84%ED%82%A4:%EB%8C%80%EB%AC%B8
 DistroWatch https://distrowatch.com/
 HamoniKR https://hamonikr.org/
 IP https://ip.pe.kr/
-#Local http://192.168.0.75/sp
-#Global http://182.31.166.4:8084/sp
-#Domain http://bkim.iptime.org:8082/sp
-#Transmission[L] http://192.168.0.58:9091/transmission/web/
-#Transmission[L] http://192.168.0.75:9091/transmission/web/
+#Local http://192.168.0.75/sp SP
+#Local http://192.168.0.1:800/ A6004NS-시스템관리-기타설정-공유기관리포트[L]
+#Local http://192.168.0.200/ A3004NS-네트워크관리-내부네트워크설정-내부IP주소[L]
+#Global http://182.31.166.4:8084/sp SP
+#Global http://182.31.166.4:9092/transmission/web/ Transmission[L]
+#Global http://182.31.166.4:8082/dav/ WebDAV[L]
+#Global http://182.31.166.4:2580/ A6004NS-보안기능-공유기접속/보안관리-원격관리포트[L]
+#Global https://182.31.166.4:9090/ Cockpit[L]
+#Domain http://bkim.iptime.org:8082/sp SP
+#Domain http://bkim.iptime.org:8082/t/im/ IM
+#Global http://182.31.166.4:8082/sp Home
+#Global http://182.31.166.4:8082/ Index
+#Global http://182.31.166.4:8082/lk Links
+#Global http://182.31.166.4:8082/t/ Tools
+#Global http://182.31.166.4:8082/a/ Pages
+#Global http://192.168.0.58:9091/transmission/web/ Transmission[L]
+#Global http://192.168.0.75:9091/transmission/web/ Transmission[L]
 GAI[L] https://gemini.google.com/app
 #GAI https://chatgpt.com/
 GitHub[L] https://github.com/prismland
@@ -37,6 +53,7 @@ ComEdu[L] https://cafe.daum.net/swncomedu
 #Pedagogy[L] https://cafe.
 Lecture[L] https://www.g-school.co.kr/lecture/lectureTeacherIntro.jsp?teacher_code=TAC20250729104640822
 #Lecture[L] https://www.imyonggosi.com/
+#Lecture[L] http://www.imyonggosi.com/
 #Lecture[L] https://www.gosiro-q.co.kr/App/Lecture/?glt_id=GLT_100416172516
 #Lecture http://www.kocw.net/home/index.do
 #Lecture https://www.kmooc.kr/
@@ -60,8 +77,9 @@ Library[L] https://lib.gnu.ac.kr/#/
 E-Book[L] https://ridibooks.com/ebook/recommendation
 Cartoon[U] https://manatoki469.net/
 Webtoon[U] https://newtoki469.com/
-#Torrent https://torrentqq406.com/
-#Torrent https://www.todawa75.asia/
+#Torrent[U] https://torrentqq406.com/
+#Torrent[U] https://www.todawa156.site/home.php
+#Torrent[U] https://www.todawa75.asia/
 #Logs https://iknowwhatyoudownload.com/en/peer/
 Used[L] https://cafe.naver.com/joonggonara
 Music[L] https://www.genie.co.kr/
