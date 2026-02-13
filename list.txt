@@ -84,29 +84,37 @@ Webtoon[U] https://newtoki469.com/
 Used[L] https://cafe.naver.com/joonggonara
 Music[L] https://www.genie.co.kr/
 iChart https://ichart.kr/
-#K-pop https://www.kpopmonster.jp/?paged=1
-#K-Ent https://www.wowkorea.jp/
-WUK https://www.withukor.com/schedule
+#iChart https://ichart.instiz.net/
+#K-pop[T] https://www.kpopmonster.jp/?paged=1
+#K-Ent[T] https://www.wowkorea.jp/
+WUK[L] https://www.withukor.com/schedule
 Lottery[L] https://www.dhlottery.co.kr/main
 #Bet[L] https://www.betman.co.kr/?m=
+#Bet[L] http://www.betman.co.kr/?m=
 Baseball https://www.koreabaseball.com/default.aspx
 NCDinos https://www.ncdinos.com/
+#Baseball https://ncdinos.com/homepage.do
 Football https://www.kleague.com/schedule.do?leagueId=2
+#Football https://kleague.com/schedule.do
 GyeongnamFC https://www.gyeongnamfc.com/
 JinjuFC http://jinjufc.co.kr/
 Basketball https://kbl.or.kr/
 LGSakers https://sakers.kbl.or.kr/
 DCI https://gall.dcinside.com/mgallery/board/lists/?id=linux
 #DCI https://gall.dcinside.com/mgallery/board/lists?id=niziproject
+#DCI https://gall.dcinside.com/mgallery/board/lists/?id=produce101japans3
+#클라씨ⓜ 아일릿ⓜ 메이딘ⓜ 유니스(UNIS)ⓜ 일본활동여자아이돌ⓜ NMIXX(엔믹스)ⓜ
 #Damoang https://damoang.net/linux
 FMK https://www.fmkorea.com/
 
 > ...
 TG[U] https://kr40.topgirl.co/video/category/JAV-2026
 SG[U] https://kr84.sogirl.so/category/jpsub/
-#4K[U] https://kr26.4kjav.co/
+#4K[U] https://kr31.4kjav.co/
 12[U] https://1av.to/ko/dm9
-#12[U] https://123av.com/ko/dm9k
+#12[U] https://123av.com/ko/dm9
+#12[U] https://123av.ws/ko
+#12[U] https://123av.gg/ko
 MA[U] https://missav.ai/dm210/ko
 #MA[U] https://missav.ws/dm16/ko
 #MA[U] https://missav.ws/dm210/ko
@@ -114,17 +122,29 @@ MA[U] https://missav.ai/dm210/ko
 #MA[U] https://missav123.com/dm515/ko
 DF[U] https://kr8.ddal.xyz/video/category/onlyfans
 #YA[U] https://yatv1.com/
+#YA[U] https://yatv3.net/" target="_blank">YT-U</a> -->
+#YA[U] https://yatv.red/" target="_blank">YT-history</a> -->
+#YA[U] https://yatv.pro/%EC%9D%BC%EB%B3%B8%EC%95%BC%EB%8F%99/%EC%95%BC%EB%8F%99%EA%B2%80%EC%83%89/1/STARS
 SB https://spankbang.com/
+#SB https://spankbang.party/
 SC[U] https://ko.stripchat.org/
 #SC[U] https://ko.stripchat.com/
+#SC[U] https://ko.stripchats.io/
+#SC[U] https://ko.stripchatgirls.com/
 #AL[U] https://myavlive.com/
 JD[L] https://javdb.com/censored
+#JD[L] https://javdb.com/actors/O2Q30 JD-YZR
+#JD[L] https://javdb.com/actors/k4OEJ JD-TRO
 DB[L] https://www.avdbs.com/
 JL https://www.javlibrary.com/ja/main.php
-DY https://avdanyuwiki.com/tag/yuduru/
+#DY https://avdanyuwiki.com/
+DY  https://avdanyuwiki.com/tag/yuduru/
+#DY	https://avdanyuwiki.com/tag/%E7%B5%90%E5%9F%8E%E7%B5%90%E5%BC%A6/ DY-YZR
+#DY https://avdanyuwiki.com/tag/%E3%82%BF%E3%83%A9%E3%82%AA/ DY-TRO
 P1[T] http://www.playno1.com/portal.php?mod=list&catid=78
-#Sort https://www.erokin.com/
+#Sort[T] https://www.erokin.com/
 JT https://javtrailers.com/videos
+#JT https://javtrailers.com/ja/videos?page=1
 AG[U] https://avgosu93.com/
 OJ https://onejav.com/
 NJ https://www.nanojav.com/
