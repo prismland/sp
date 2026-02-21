@@ -13,70 +13,67 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             min-height: 100vh;
-            padding: 20px 0;
+            padding: 40px 0;
         }
         .header { text-align: center; margin-bottom: 30px; }
         #clock { font-size: 4rem; font-weight: 100; margin: 10px 0; letter-spacing: -2px; }
         #date { font-size: 1.2rem; color: #888; letter-spacing: 1px; }
-        #weather { font-size: 1rem; color: #aaa; margin-top: 15px; font-weight: 300; line-height: 1.4; }
+        #weather { font-size: 0.95rem; color: #aaa; margin-top: 15px; font-weight: 300; }
 
         .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-content: center;
-            gap: 15px;
-            width: 100%;
-            max-width: 700px;
+            display: grid;
+            /* 화면 넓이에 따라 버튼 수 유동적 조절 (최소 140px) */
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            width: 95%;
+            max-width: 900px;
             margin: 0 auto;
         }
         
-        details { width: 100%; max-width: 700px; margin-top: 20px; }
+        details { width: 95%; max-width: 900px; margin-bottom: 20px; }
         summary {
             cursor: pointer;
-            color: #555;
-            font-size: 0.9rem;
+            color: #666;
+            font-size: 1rem;
             list-style: none;
-            transition: 0.3s;
             padding: 15px;
             text-align: center;
-            user-select: none;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: 0.3s;
         }
         summary:hover { color: #fff; }
-        summary::before { content: "+ "; }
-        details[open] summary::before { content: "- "; }
-        details .container { display: flex; justify-content: center; padding: 10px 0; }
+        summary::before { content: ":: "; }
+        summary::after { content: " ::"; }
 
         .link-item {
-            flex: 0 1 140px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between; /* 이모지 양끝 배치 */
             align-items: center;
-            height: 60px;
+            height: 55px;
+            padding: 0 15px;
             background-color: #1a1a1a;
             color: #fff;
             text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
+            font-size: 0.9rem;
+            font-weight: 500;
             border-radius: 8px;
             border: 1px solid #333;
             transition: 0.2s;
-            text-align: center;
-            padding: 0 5px;
         }
         .link-item:hover { background-color: #eee; color: #000; transform: translateY(-2px); }
+        .item-name { flex-grow: 1; text-align: center; }
 
-        /* 특수 상태 스타일 */
-        .login-required { border-color: #2b5a82; } /* 로그인: 푸른색 테두리 */
-        .update-needed { border-color: #825a2b; }  /* 주소변경: 주황색 테두리 */
+        .login-required { border-color: #2b5a82; }
+        .update-needed { border-color: #825a2b; }
         
-        .spacer { flex-basis: 100%; height: 30px; }
+        .spacer { grid-column: 1 / -1; height: 20px; }
 
         @media (max-width: 480px) {
-            .link-item { flex: 0 1 44%; font-size: 0.85rem; }
             #clock { font-size: 3rem; }
+            .container { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); }
         }
     </style>
 </head>
@@ -86,99 +83,326 @@
         <div id="clock">00:00:00</div>
         <div id="weather">Loading weather...</div>
     </div>
-    <div class="container">
-        <details><summary>Play</summary><div class="container">
-        <a href="https://www.youtube.com/" class="link-item login-required" target="_blank" rel="noopener noreferrer">🔑 📺YouTube</a>
-        <a href="https://tvwiki5.net/" class="link-item update-needed" target="_blank" rel="noopener noreferrer">⚠️ 📽️VOD</a>
-        <a href="https://www.hulk24.com/broad.php" class="link-item update-needed" target="_blank" rel="noopener noreferrer">⚠️ Broadcast</a>
-        <a href="https://search.naver.com/search.naver?where=nexearch&sm=top_sly.hst&fbm=0&acr=1&ie=utf8&query=TV%ED%8E%B8%EC%84%B1%ED%91%9C&ackey=hedwulm9" class="link-item login-required" target="_blank" rel="noopener noreferrer">🔑 📡Table</a>
+    <details open><summary>Play</summary><div class="container">
+        <a href="https://www.youtube.com/" class="link-item login-required" target="_blank" rel="noopener noreferrer">
+            <span>📺</span>
+            <span class="item-name">YouTube</span>
+            <span>🔑</span>
+        </a>
+        <a href="https://tvwiki5.net/" class="link-item update-needed" target="_blank" rel="noopener noreferrer">
+            <span>📽</span>
+            <span class="item-name">️VOD</span>
+            <span>⚠️</span>
+        </a>
+        <a href="https://www.hulk24.com/broad.php" class="link-item update-needed" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">Broadcast</span>
+            <span>⚠️</span>
+        </a>
+        <a href="https://search.naver.com/search.naver?where=nexearch&sm=top_sly.hst&fbm=0&acr=1&ie=utf8&query=TV%ED%8E%B8%EC%84%B1%ED%91%9C&ackey=hedwulm9" class="link-item login-required" target="_blank" rel="noopener noreferrer">
+            <span>📡</span>
+            <span class="item-name">Table</span>
+            <span>🔑</span>
+        </a>
         <div class="spacer"></div>
-        </div></details>
-        <details><summary>News</summary><div class="container">
-        <a href="https://m.sports.naver.com/scoreboard/index" class="link-item" target="_blank" rel="noopener noreferrer">ScoreBoard</a>
-        <a href="https://news.daum.net/world" class="link-item" target="_blank" rel="noopener noreferrer">📰News</a>
-        <a href="https://www.msn.com/ko-kr?ocid=wn_startbrowsing" class="link-item" target="_blank" rel="noopener noreferrer">MSN</a>
-        <a href="https://arca.live/b/namuhotnow/" class="link-item" target="_blank" rel="noopener noreferrer">HotNow</a>
-        <a href="https://www.weather.go.kr/w/index.do#dong/4817074000/35.156944/128.10883/%EA%B2%BD%EC%83%81%EB%82%A8%EB%8F%84%20%EC%A7%84%EC%A3%BC%EC%8B%9C%20%EA%B0%80%ED%98%B8%EB%8F%99/SEL/%EA%B0%80%ED%98%B8%EB%8F%99" class="link-item" target="_blank" rel="noopener noreferrer">🌤️Weather</a>
-        <a href="https://www.gnu.ac.kr/main/ad/fm/foodmenu/selectFoodMenuView.do?mi=1341&restSeq=5" class="link-item" target="_blank" rel="noopener noreferrer">🍱Cafeteria</a>
-        <a href="https://namu.wiki/w/%EB%82%98%EB%AC%B4%EC%9C%84%ED%82%A4:%EB%8C%80%EB%AC%B8" class="link-item" target="_blank" rel="noopener noreferrer">Wiki</a>
+    </div></details>
+    <details open><summary>News</summary><div class="container">
+        <a href="https://m.sports.naver.com/scoreboard/index" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">ScoreBoard</span>
+            <span></span>
+        </a>
+        <a href="https://news.daum.net/world" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span>📰</span>
+            <span class="item-name">News</span>
+            <span></span>
+        </a>
+        <a href="https://www.msn.com/ko-kr?ocid=wn_startbrowsing" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">MSN</span>
+            <span></span>
+        </a>
+        <a href="https://arca.live/b/namuhotnow/" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">HotNow</span>
+            <span></span>
+        </a>
+        <a href="https://www.weather.go.kr/w/index.do#dong/4817074000/35.156944/128.10883/%EA%B2%BD%EC%83%81%EB%82%A8%EB%8F%84%20%EC%A7%84%EC%A3%BC%EC%8B%9C%20%EA%B0%80%ED%98%B8%EB%8F%99/SEL/%EA%B0%80%ED%98%B8%EB%8F%99" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span>🌤</span>
+            <span class="item-name">️Weather</span>
+            <span></span>
+        </a>
+        <a href="https://www.gnu.ac.kr/main/ad/fm/foodmenu/selectFoodMenuView.do?mi=1341&restSeq=5" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span>🍱</span>
+            <span class="item-name">Cafeteria</span>
+            <span></span>
+        </a>
+        <a href="https://namu.wiki/w/%EB%82%98%EB%AC%B4%EC%9C%84%ED%82%A4:%EB%8C%80%EB%AC%B8" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">Wiki</span>
+            <span></span>
+        </a>
         <div class="spacer"></div>
-        </div></details>
-        <details><summary>Tech</summary><div class="container">
-        <a href="https://distrowatch.com/" class="link-item" target="_blank" rel="noopener noreferrer">DistroWatch</a>
-        <a href="https://hamonikr.org/" class="link-item" target="_blank" rel="noopener noreferrer">HamoniKR</a>
-        <a href="https://ip.pe.kr/" class="link-item" target="_blank" rel="noopener noreferrer">🧭IP</a>
+    </div></details>
+    <details open><summary>Tech</summary><div class="container">
+        <a href="https://distrowatch.com/" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">DistroWatch</span>
+            <span></span>
+        </a>
+        <a href="https://hamonikr.org/" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">HamoniKR</span>
+            <span></span>
+        </a>
+        <a href="https://ip.pe.kr/" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span>🧭</span>
+            <span class="item-name">IP</span>
+            <span></span>
+        </a>
         <div class="spacer"></div>
-        </div></details>
-        <details><summary>Tools</summary><div class="container">
-        <a href="https://gemini.google.com/app" class="link-item login-required" target="_blank" rel="noopener noreferrer">🔑 🤖GAI</a>
-        <a href="https://github.com/prismland" class="link-item login-required" target="_blank" rel="noopener noreferrer">🔑 GitHub</a>
-        <a href="https://papago.naver.com/?sk=auto&tk=ko" class="link-item" target="_blank" rel="noopener noreferrer">🔤Translator</a>
-        <a href="https://mail.naver.com/v2/folders/-1/unread" class="link-item login-required" target="_blank" rel="noopener noreferrer">🔑 📧E-Mail</a>
+    </div></details>
+    <details open><summary>Tools</summary><div class="container">
+        <a href="https://gemini.google.com/app" class="link-item login-required" target="_blank" rel="noopener noreferrer">
+            <span>🤖</span>
+            <span class="item-name">GAI</span>
+            <span>🔑</span>
+        </a>
+        <a href="https://github.com/prismland" class="link-item login-required" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">GitHub</span>
+            <span>🔑</span>
+        </a>
+        <a href="https://papago.naver.com/?sk=auto&tk=ko" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span>🔤</span>
+            <span class="item-name">Translator</span>
+            <span></span>
+        </a>
+        <a href="https://mail.naver.com/v2/folders/-1/unread" class="link-item login-required" target="_blank" rel="noopener noreferrer">
+            <span>📧</span>
+            <span class="item-name">E-Mail</span>
+            <span>🔑</span>
+        </a>
         <div class="spacer"></div>
-        </div></details>
-        <details><summary>Edu</summary><div class="container">
-        <a href="https://cafe.daum.net/swncomedu" class="link-item login-required" target="_blank" rel="noopener noreferrer">🔑 ✏️ComEdu</a>
-        <a href="https://www.g-school.co.kr/lecture/lectureTeacherIntro.jsp?teacher_code=TAC20250729104640822" class="link-item login-required" target="_blank" rel="noopener noreferrer">🔑 👨‍🏫Lecture</a>
-        <a href="https://lib.gnu.ac.kr/#/" class="link-item login-required" target="_blank" rel="noopener noreferrer">🔑 🏛️Library</a>
-        <a href="https://ridibooks.com/ebook/recommendation" class="link-item login-required" target="_blank" rel="noopener noreferrer">🔑 📖E-Book</a>
+    </div></details>
+    <details open><summary>Edu</summary><div class="container">
+        <a href="https://cafe.daum.net/swncomedu" class="link-item login-required" target="_blank" rel="noopener noreferrer">
+            <span>✏</span>
+            <span class="item-name">️ComEdu</span>
+            <span>🔑</span>
+        </a>
+        <a href="https://www.g-school.co.kr/lecture/lectureTeacherIntro.jsp?teacher_code=TAC20250729104640822" class="link-item login-required" target="_blank" rel="noopener noreferrer">
+            <span>👨</span>
+            <span class="item-name">‍🏫Lecture</span>
+            <span>🔑</span>
+        </a>
+        <a href="https://lib.gnu.ac.kr/#/" class="link-item login-required" target="_blank" rel="noopener noreferrer">
+            <span>🏛</span>
+            <span class="item-name">️Library</span>
+            <span>🔑</span>
+        </a>
+        <a href="https://ridibooks.com/ebook/recommendation" class="link-item login-required" target="_blank" rel="noopener noreferrer">
+            <span>📖</span>
+            <span class="item-name">E-Book</span>
+            <span>🔑</span>
+        </a>
         <div class="spacer"></div>
-        </div></details>
-        <details><summary>Enter</summary><div class="container">
-        <a href="https://manatoki469.net/" class="link-item update-needed" target="_blank" rel="noopener noreferrer">⚠️ Cartoon</a>
-        <a href="https://newtoki469.com/" class="link-item update-needed" target="_blank" rel="noopener noreferrer">⚠️ Webtoon</a>
-        <a href="https://cafe.naver.com/joonggonara" class="link-item login-required" target="_blank" rel="noopener noreferrer">🔑 🛍️Used</a>
-        <a href="https://www.genie.co.kr/" class="link-item login-required" target="_blank" rel="noopener noreferrer">🔑 🎵Music</a>
-        <a href="https://ichart.kr/" class="link-item" target="_blank" rel="noopener noreferrer">iChart</a>
-        <a href="https://www.withukor.com/schedule" class="link-item login-required" target="_blank" rel="noopener noreferrer">🔑 WUK</a>
-        <a href="https://www.dhlottery.co.kr/main" class="link-item login-required" target="_blank" rel="noopener noreferrer">🔑 🎰Lottery</a>
+    </div></details>
+    <details open><summary>Enter</summary><div class="container">
+        <a href="https://manatoki469.net/" class="link-item update-needed" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">Cartoon</span>
+            <span>⚠️</span>
+        </a>
+        <a href="https://newtoki469.com/" class="link-item update-needed" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">Webtoon</span>
+            <span>⚠️</span>
+        </a>
+        <a href="https://cafe.naver.com/joonggonara" class="link-item login-required" target="_blank" rel="noopener noreferrer">
+            <span>🛍</span>
+            <span class="item-name">️Used</span>
+            <span>🔑</span>
+        </a>
+        <a href="https://www.genie.co.kr/" class="link-item login-required" target="_blank" rel="noopener noreferrer">
+            <span>🎵</span>
+            <span class="item-name">Music</span>
+            <span>🔑</span>
+        </a>
+        <a href="https://ichart.kr/" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">iChart</span>
+            <span></span>
+        </a>
+        <a href="https://www.withukor.com/schedule" class="link-item login-required" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">WUK</span>
+            <span>🔑</span>
+        </a>
+        <a href="https://www.dhlottery.co.kr/main" class="link-item login-required" target="_blank" rel="noopener noreferrer">
+            <span>🎰</span>
+            <span class="item-name">Lottery</span>
+            <span>🔑</span>
+        </a>
         <div class="spacer"></div>
-        </div></details>
-        <details><summary>Sports</summary><div class="container">
-        <a href="https://www.koreabaseball.com/default.aspx" class="link-item" target="_blank" rel="noopener noreferrer">⚾Baseball</a>
-        <a href="https://www.ncdinos.com/" class="link-item" target="_blank" rel="noopener noreferrer">NCDinos</a>
-        <a href="https://www.kleague.com/schedule.do?leagueId=2" class="link-item" target="_blank" rel="noopener noreferrer">⚽Football</a>
-        <a href="https://www.gyeongnamfc.com/" class="link-item" target="_blank" rel="noopener noreferrer">GyeongnamFC</a>
-        <a href="http://jinjufc.co.kr/" class="link-item" target="_blank" rel="noopener noreferrer">JinjuFC</a>
-        <a href="https://kbl.or.kr/" class="link-item" target="_blank" rel="noopener noreferrer">🏀Basketball</a>
-        <a href="https://sakers.kbl.or.kr/" class="link-item" target="_blank" rel="noopener noreferrer">LGSakers</a>
+    </div></details>
+    <details open><summary>Sports</summary><div class="container">
+        <a href="https://www.koreabaseball.com/default.aspx" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span>⚾</span>
+            <span class="item-name">Baseball</span>
+            <span></span>
+        </a>
+        <a href="https://www.ncdinos.com/" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">NCDinos</span>
+            <span></span>
+        </a>
+        <a href="https://www.kleague.com/schedule.do?leagueId=2" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span>⚽</span>
+            <span class="item-name">Football</span>
+            <span></span>
+        </a>
+        <a href="https://www.gyeongnamfc.com/" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">GyeongnamFC</span>
+            <span></span>
+        </a>
+        <a href="http://jinjufc.co.kr/" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">JinjuFC</span>
+            <span></span>
+        </a>
+        <a href="https://kbl.or.kr/" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span>🏀</span>
+            <span class="item-name">Basketball</span>
+            <span></span>
+        </a>
+        <a href="https://sakers.kbl.or.kr/" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">LGSakers</span>
+            <span></span>
+        </a>
         <div class="spacer"></div>
-        </div></details>
-        <details><summary>Community</summary><div class="container">
-        <a href="https://gall.dcinside.com/mgallery/board/lists/?id=linux" class="link-item" target="_blank" rel="noopener noreferrer">DCI</a>
-        <a href="https://www.fmkorea.com/" class="link-item" target="_blank" rel="noopener noreferrer">FMK</a>
+    </div></details>
+    <details open><summary>Community</summary><div class="container">
+        <a href="https://gall.dcinside.com/mgallery/board/lists/?id=linux" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">DCI</span>
+            <span></span>
+        </a>
+        <a href="https://www.fmkorea.com/" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">FMK</span>
+            <span></span>
+        </a>
         <div class="spacer"></div>
-        </div></details>
-        <details><summary>...</summary><div class="container">
-        <a href="https://kr40.topgirl.co/video/category/JAV-2026" class="link-item update-needed" target="_blank" rel="noopener noreferrer">⚠️ TG</a>
-        <a href="https://kr84.sogirl.so/category/jpsub/" class="link-item update-needed" target="_blank" rel="noopener noreferrer">⚠️ SG</a>
-        <a href="https://1av.to/ko/dm9" class="link-item update-needed" target="_blank" rel="noopener noreferrer">⚠️ 12</a>
-        <a href="https://missav.ai/dm210/ko" class="link-item update-needed" target="_blank" rel="noopener noreferrer">⚠️ MA</a>
-        <a href="https://kr8.ddal.xyz/video/category/onlyfans" class="link-item update-needed" target="_blank" rel="noopener noreferrer">⚠️ DF</a>
-        <a href="https://spankbang.com/" class="link-item" target="_blank" rel="noopener noreferrer">SB</a>
-        <a href="https://ko.stripchat.org/" class="link-item update-needed" target="_blank" rel="noopener noreferrer">⚠️ SC</a>
-        <a href="https://javdb.com/censored" class="link-item login-required" target="_blank" rel="noopener noreferrer">🔑 JD</a>
-        <a href="https://www.avdbs.com/" class="link-item login-required" target="_blank" rel="noopener noreferrer">🔑 DB</a>
-        <a href="https://www.javlibrary.com/ja/main.php" class="link-item" target="_blank" rel="noopener noreferrer">JL</a>
-        <a href="https://www.gravurefit.com/av/" class="link-item" target="_blank" rel="noopener noreferrer">GF</a>
-        <a href="https://avdanyuwiki.com/tag/yuduru/" class="link-item" target="_blank" rel="noopener noreferrer">DY</a>
-        <a href="http://www.playno1.com/portal.php?mod=list&catid=78" class="link-item" target="_blank" rel="noopener noreferrer">🌐 P1</a>
-        <a href="https://javtrailers.com/videos" class="link-item" target="_blank" rel="noopener noreferrer">JT</a>
-        <a href="https://avgosu93.com/" class="link-item update-needed" target="_blank" rel="noopener noreferrer">⚠️ AG</a>
-        <a href="https://onejav.com/" class="link-item" target="_blank" rel="noopener noreferrer">OJ</a>
-        <a href="https://www.nanojav.com/" class="link-item" target="_blank" rel="noopener noreferrer">NJ</a>
-        <a href="https://subtitlecat.com/" class="link-item" target="_blank" rel="noopener noreferrer">ST</a>
-        <a href="https://today-sports7.com/bbs/board.php?bo_table=AI" class="link-item update-needed" target="_blank" rel="noopener noreferrer">⚠️ AI</a>
-        <a href="https://1004ak.com/" class="link-item update-needed" target="_blank" rel="noopener noreferrer">⚠️ 14</a>
-        </div></details>
-    </div>
+    </div></details>
+    <details><summary>...</summary><div class="container">
+        <a href="https://kr40.topgirl.co/video/category/JAV-2026" class="link-item update-needed" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">TG</span>
+            <span>⚠️</span>
+        </a>
+        <a href="https://kr84.sogirl.so/category/jpsub/" class="link-item update-needed" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">SG</span>
+            <span>⚠️</span>
+        </a>
+        <a href="https://1av.to/ko/dm9" class="link-item update-needed" target="_blank" rel="noopener noreferrer">
+            <span>1</span>
+            <span class="item-name">2</span>
+            <span>⚠️</span>
+        </a>
+        <a href="https://missav.ai/dm210/ko" class="link-item update-needed" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">MA</span>
+            <span>⚠️</span>
+        </a>
+        <a href="https://kr8.ddal.xyz/video/category/onlyfans" class="link-item update-needed" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">DF</span>
+            <span>⚠️</span>
+        </a>
+        <a href="https://spankbang.com/" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">SB</span>
+            <span></span>
+        </a>
+        <a href="https://ko.stripchat.org/" class="link-item update-needed" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">SC</span>
+            <span>⚠️</span>
+        </a>
+        <a href="https://javdb.com/censored" class="link-item login-required" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">JD</span>
+            <span>🔑</span>
+        </a>
+        <a href="https://www.avdbs.com/" class="link-item login-required" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">DB</span>
+            <span>🔑</span>
+        </a>
+        <a href="https://www.javlibrary.com/ja/main.php" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">JL</span>
+            <span></span>
+        </a>
+        <a href="https://www.gravurefit.com/av/" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">GF</span>
+            <span></span>
+        </a>
+        <a href="https://avdanyuwiki.com/tag/yuduru/" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">DY</span>
+            <span></span>
+        </a>
+        <a href="http://www.playno1.com/portal.php?mod=list&catid=78" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">P1</span>
+            <span>🌐</span>
+        </a>
+        <a href="https://javtrailers.com/videos" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">JT</span>
+            <span></span>
+        </a>
+        <a href="https://avgosu93.com/" class="link-item update-needed" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">AG</span>
+            <span>⚠️</span>
+        </a>
+        <a href="https://onejav.com/" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">OJ</span>
+            <span></span>
+        </a>
+        <a href="https://www.nanojav.com/" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">NJ</span>
+            <span></span>
+        </a>
+        <a href="https://subtitlecat.com/" class="link-item" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">ST</span>
+            <span></span>
+        </a>
+        <a href="https://today-sports7.com/bbs/board.php?bo_table=AI" class="link-item update-needed" target="_blank" rel="noopener noreferrer">
+            <span></span>
+            <span class="item-name">AI</span>
+            <span>⚠️</span>
+        </a>
+        <a href="https://1004ak.com/" class="link-item update-needed" target="_blank" rel="noopener noreferrer">
+            <span>1</span>
+            <span class="item-name">4</span>
+            <span>⚠️</span>
+        </a>
+    </div></details>
     <script>
         function updateClock() {
             const now = new Date();
-            const h = String(now.getHours()).padStart(2, '0');
-            const m = String(now.getMinutes()).padStart(2, '0');
-            const s = String(now.getSeconds()).padStart(2, '0');
-            document.getElementById('clock').textContent = h + ":" + m + ":" + s;
+            document.getElementById('clock').textContent = now.toTimeString().split(' ')[0];
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             document.getElementById('date').textContent = now.toLocaleDateString('en-US', options);
         }
@@ -187,14 +411,9 @@
             try {
                 const response = await fetch('https://wttr.in/Jinju?format=%c+%C+%t+(Feels+%f)+%w');
                 let data = await response.text();
-                // km/h -> m/s 자체 변환 로직
-                data = data.replace(/([0-9.]+)\s*km\/h/g, function(match, p1) {
-                    return (parseFloat(p1) / 3.6).toFixed(1) + "m/s";
-                });
+                data = data.replace(/([0-9.]+)\s*km\/h/g, (m, p1) => (p1/3.6).toFixed(1) + "m/s");
                 document.getElementById('weather').textContent = "Jinju: " + data;
-            } catch (e) { 
-                document.getElementById('weather').textContent = "Weather unavailable"; 
-            }
+            } catch (e) { document.getElementById('weather').textContent = "Weather unavailable"; }
         }
 
         setInterval(updateClock, 1000);
