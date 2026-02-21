@@ -31,7 +31,6 @@ cat <<'EOF' > $OUTPUT
 
         .container {
             display: grid;
-            /* 5개 제한 없이 너비에 맞춰 꽉 채움 */
             grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
             gap: 10px;
             width: 98%;
@@ -71,7 +70,7 @@ cat <<'EOF' > $OUTPUT
         }
         .link-item:hover { background-color: #eee; color: #000; transform: translateY(-1px); }
         .item-name { flex-grow: 1; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 4px; }
-        .icon-box { min-width: 22px; display: flex; justify-content: center; font-size: 1.1rem; }
+        .icon-box { min-width: 25px; display: flex; justify-content: center; font-size: 1.2rem; }
 
         .login-required { border-color: #1e3a5f; }
         .update-needed { border-color: #5f3a1e; }
@@ -110,14 +109,13 @@ while IFS= read -r line || [[ -n "$line" ]]; do
         name=$(echo "$line" | awk '{print $1}')
         url=$(echo "$line" | awk '{print $2}')
         
-        # 1. 이름 맨 앞의 이모지 추출 (숫자/문자 제외) 
-        icon_left=$(echo "$name" | grep -oP "^[\x{1F300}-\x{1F9FF}\x{2600}-\x{26FF}\x{2700}-\x{27BF}]" 2>/dev/null)
+        # [해결책] 정규식을 보강하여 복합 이모지 및 특수기호를 통째로 추출
+        icon_left=$(echo "$name" | grep -oP "^(\p{Emoji_Presentation}|\p{Emoji}\x{FE0F})(\x{200D}\p{Emoji})*" 2>/dev/null)
         clean_name=${name#$icon_left}
         
         icon_right=""
         item_class="link-item"
 
-        # 2. 상태 태그 처리 (오른쪽 배치용) [cite: 1, 2, 3]
         if [[ "$clean_name" == *"[L]"* ]]; then
             icon_right="🔑"
             clean_name=${clean_name//\[L\]/}
