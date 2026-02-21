@@ -137,6 +137,13 @@ JD[L] https://javdb.com/censored
 #JD[L] https://javdb.com/actors/k4OEJ JD-TRO
 DB[L] https://www.avdbs.com/
 JL https://www.javlibrary.com/ja/main.php
+GF https://www.gravurefit.com/av/
+#SS[T] http://seesaawiki.jp/avsagasou/
+#SsW[T] https://wiki.seesaa.jp/
+#TotalW[T] http://sougouwiki.com/
+#PediaW[T] https://av-help.memo.wiki/
+#NameW[T] https://seesaawiki.jp/av_neme/
+#TVW[T] https://seesaawiki.jp/pre_shiro/
 #DY https://avdanyuwiki.com/
 DY  https://avdanyuwiki.com/tag/yuduru/
 #DY	https://avdanyuwiki.com/tag/%E7%B5%90%E5%9F%8E%E7%B5%90%E5%BC%A6/ DY-YZR
