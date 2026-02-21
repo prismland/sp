@@ -22,7 +22,7 @@ cat <<'EOF' > $OUTPUT
             align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
-            padding: 20px 0; /* 상하 여백 축소 */
+            padding: 20px 0;
         }
         .header { text-align: center; margin-bottom: 20px; }
         #clock { font-size: 4rem; font-weight: 100; margin: 5px 0; letter-spacing: -2px; }
@@ -31,21 +31,21 @@ cat <<'EOF' > $OUTPUT
 
         .container {
             display: grid;
-            /* 5개 제한 없이 화면 꽉 차게 설정 */
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            /* 5개 제한 없이 너비에 맞춰 꽉 채움 */
+            grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
             gap: 10px;
             width: 98%;
-            max-width: 1200px; /* 더 넓은 화면 대응 */
+            max-width: 1400px;
             margin: 0 auto;
         }
         
-        details { width: 98%; max-width: 1200px; margin-bottom: 5px; } /* 카테고리 간격 축소 */
+        details { width: 98%; max-width: 1400px; margin-bottom: 5px; }
         summary {
             cursor: pointer;
             color: #444;
             font-size: 0.85rem;
             list-style: none;
-            padding: 10px;
+            padding: 8px;
             text-align: center;
             font-weight: bold;
             transition: 0.3s;
@@ -59,7 +59,7 @@ cat <<'EOF' > $OUTPUT
             justify-content: space-between;
             align-items: center;
             height: 50px;
-            padding: 0 12px;
+            padding: 0 10px;
             background-color: #161616;
             color: #fff;
             text-decoration: none;
@@ -70,8 +70,8 @@ cat <<'EOF' > $OUTPUT
             transition: 0.2s;
         }
         .link-item:hover { background-color: #eee; color: #000; transform: translateY(-1px); }
-        .item-name { flex-grow: 1; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .icon-box { width: 20px; display: flex; justify-content: center; }
+        .item-name { flex-grow: 1; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 4px; }
+        .icon-box { min-width: 22px; display: flex; justify-content: center; font-size: 1.1rem; }
 
         .login-required { border-color: #1e3a5f; }
         .update-needed { border-color: #5f3a1e; }
@@ -80,7 +80,7 @@ cat <<'EOF' > $OUTPUT
 
         @media (max-width: 480px) {
             #clock { font-size: 2.5rem; }
-            .container { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+            .container { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
         }
     </style>
 </head>
@@ -102,7 +102,6 @@ while IFS= read -r line || [[ -n "$line" ]]; do
         ((CURRENT_SECTION++))
         [ $CURRENT_SECTION -gt 1 ] && echo "    </div></details>" >> $OUTPUT
         TITLE=$(echo "$line" | sed 's/^>//' | xargs)
-        # 마지막 섹션만 접힌 상태로 시작 [cite: 2]
         STATE=$([ "$CURRENT_SECTION" -lt "$TOTAL_SECTIONS" ] && echo "open" || echo "")
         echo "    <details $STATE><summary>$TITLE</summary><div class=\"container\">" >> $OUTPUT
     elif [[ -z "$line" ]]; then
@@ -111,16 +110,28 @@ while IFS= read -r line || [[ -n "$line" ]]; do
         name=$(echo "$line" | awk '{print $1}')
         url=$(echo "$line" | awk '{print $2}')
         
-        # 숫자나 일반 문자가 아닌 '순수 이모지'만 분리하는 로직 [cite: 2]
-        icon_left=$(echo "$name" | grep -oP "^[\x{1F300}-\x{1F9FF}\x{2600}-\x{26FF}]" 2>/dev/null)
+        # 1. 이름 맨 앞의 이모지 추출 (숫자/문자 제외) 
+        icon_left=$(echo "$name" | grep -oP "^[\x{1F300}-\x{1F9FF}\x{2600}-\x{26FF}\x{2700}-\x{27BF}]" 2>/dev/null)
         clean_name=${name#$icon_left}
         
         icon_right=""
         item_class="link-item"
 
-        [[ "$name" == *"[L]"* ]] && icon_right="🔑" && clean_name=${clean_name//\[L\]/} && item_class="$item_class login-required"
-        [[ "$name" == *"[T]"* ]] && icon_right="${icon_right}🌐" && clean_name=${clean_name//\[T\]/}
-        [[ "$name" == *"[U]"* ]] && icon_right="${icon_right}⚠️" && clean_name=${clean_name//\[U\]/} && item_class="$item_class update-needed"
+        # 2. 상태 태그 처리 (오른쪽 배치용) [cite: 1, 2, 3]
+        if [[ "$clean_name" == *"[L]"* ]]; then
+            icon_right="🔑"
+            clean_name=${clean_name//\[L\]/}
+            item_class="$item_class login-required"
+        fi
+        if [[ "$clean_name" == *"[T]"* ]]; then
+            icon_right="${icon_right}🌐"
+            clean_name=${clean_name//\[T\]/}
+        fi
+        if [[ "$clean_name" == *"[U]"* ]]; then
+            icon_right="${icon_right}⚠️"
+            clean_name=${clean_name//\[U\]/}
+            item_class="$item_class update-needed"
+        fi
 
         echo "        <a href=\"$url\" class=\"$item_class\" target=\"_blank\" rel=\"noopener noreferrer\">" >> $OUTPUT
         echo "            <span class=\"icon-box\">$icon_left</span>" >> $OUTPUT
@@ -144,7 +155,6 @@ cat <<'EOF' >> $OUTPUT
             try {
                 const response = await fetch('https://wttr.in/Jinju?format=%c+%C+%t+(Feels+%f)+%w');
                 let data = await response.text();
-                // km/h -> m/s 변환 [cite: 2]
                 data = data.replace(/([0-9.]+)\s*km\/h/g, (m, p1) => (p1/3.6).toFixed(1) + "m/s");
                 document.getElementById('weather').textContent = "Jinju: " + data;
             } catch (e) { document.getElementById('weather').textContent = "Weather unavailable"; }
