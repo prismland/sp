@@ -24,7 +24,7 @@ HotNow https://arca.live/b/namuhotnow/
 Wiki https://namu.wiki/w/%EB%82%98%EB%AC%B4%EC%9C%84%ED%82%A4:%EB%8C%80%EB%AC%B8
 
 > Tech
-DistroWatch https://distrowatch.com/
+🖥️DistroWatch https://distrowatch.com/
 HamoniKR https://hamonikr.org/
 🧭IP https://ip.pe.kr/
 #Local http://192.168.0.75/sp SP
@@ -115,12 +115,12 @@ JinjuFC http://jinjufc.co.kr/
 LGSakers https://sakers.kbl.or.kr/
 
 > Community
-DCI https://gall.dcinside.com/mgallery/board/lists/?id=linux
+💬DCI https://gall.dcinside.com/mgallery/board/lists/?id=linux
 #DCI https://gall.dcinside.com/mgallery/board/lists?id=niziproject
 #DCI https://gall.dcinside.com/mgallery/board/lists/?id=produce101japans3
 #클라씨ⓜ 아일릿ⓜ 메이딘ⓜ 유니스(UNIS)ⓜ 일본활동여자아이돌ⓜ NMIXX(엔믹스)ⓜ
 #Damoang https://damoang.net/linux
-FMK https://www.fmkorea.com/
+💬FMK https://www.fmkorea.com/
 
 > ...
 TG[U] https://kr40.topgirl.co/video/category/JAV-2026
