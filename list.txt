@@ -109,7 +109,7 @@ NCDinos https://www.ncdinos.com/
 #Baseball https://ncdinos.com/homepage.do
 ⚽Football https://www.kleague.com/schedule.do?leagueId=2
 #Football https://kleague.com/schedule.do
-GyeongnamFC https://www.gyeongnamfc.com/
+GNFC https://www.gyeongnamfc.com/
 JinjuFC http://jinjufc.co.kr/
 🏀Basketball https://kbl.or.kr/
 LGSakers https://sakers.kbl.or.kr/
