@@ -27,9 +27,11 @@ Wiki https://namu.wiki/w/%EB%82%98%EB%AC%B4%EC%9C%84%ED%82%A4:%EB%8C%80%EB%AC%B8
 🖥️DistroWatch https://distrowatch.com/
 HamoniKR https://hamonikr.org/
 🧭IP https://ip.pe.kr/
-#Local http://192.168.0.75/sp SP
 #Local http://192.168.0.1:800/ A6004NS-시스템관리-기타설정-공유기관리포트[L]
 #Local http://192.168.0.200/ A3004NS-네트워크관리-내부네트워크설정-내부IP주소[L]
+#Local http://192.168.0.75/sp SP
+#Local http://192.168.0.75:9091/transmission/web/ Transmission[L]
+#Local http://192.168.0.58:9091/transmission/web/ Transmission[L]
 #Global http://182.31.166.4:8084/sp SP
 #Global http://182.31.166.4:9092/transmission/web/ Transmission[L]
 #Global http://182.31.166.4:8082/dav/ WebDAV[L]
@@ -42,8 +44,8 @@ HamoniKR https://hamonikr.org/
 #Global http://182.31.166.4:8082/lk Links
 #Global http://182.31.166.4:8082/t/ Tools
 #Global http://182.31.166.4:8082/a/ Pages
-#Global http://192.168.0.58:9091/transmission/web/ Transmission[L]
-#Global http://192.168.0.75:9091/transmission/web/ Transmission[L]
+#Tailscale http://100.71.117.93/sp
+#Tailscale http://bkim-2bay.beago-truck.ts.net/sp
 
 > Tools
 🤖GAI[L] https://gemini.google.com/app
