@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DVD Library</title>
+    <style>
+        :root { --bg: #0a0a0a; --card: #161616; --accent: #0288d1; --text: #d1d1d1; --yellow: #ffc107; --border: #333; }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; }
+        
+        .header-section { max-width: 1400px; margin: 0 auto 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border); display: flex; align-items: center; gap: 20px; }
+        .search-form { flex: 1; display: flex; gap: 10px; align-items: center; }
+        input[type="text"] { flex: 1; background: #000; border: 1px solid var(--border); padding: 12px; border-radius: 6px; color: #fff; outline: none; }
+        
+        .btn { padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; border: none; text-decoration: none; font-size: 14px; transition: 0.2s; display: inline-flex; align-items: center; justify-content: center; }
+        .btn-search { background: var(--accent); color: #fff; }
+        .btn-reset { background: #333; color: #aaa; }
+        .btn-reset:hover { background: #444; color: #fff; }
+
+        .filters { display: flex; gap: 15px; font-size: 14px; color: #888; margin-left: 10px; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 25px; max-width: 1400px; margin: 0 auto; }
+        .card { background: var(--card); border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; border: 1px solid #222; transition: 0.3s; position: relative; display: block; }
+        .card:hover { transform: translateY(-8px); border-color: var(--accent); }
+        
+        .img-box { width: 100%; aspect-ratio: 18/26; background: #222; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+	.img-box img { width: 100%; height: 100%; object-fit: cover;          /* 가로세로 비율을 유지하며 박스를 채움 */
+		object-position: right center; /* 이미지의 오른쪽(Right)을 기준으로 정렬 */
+	}
+        .no-image-text { display: none; color: #444; font-weight: bold; font-size: 20px; letter-spacing: 2px; }
+        
+        .img-error img { display: none; }
+        .img-error .no-image-text { display: block; }
+        
+        .sub-badge { position: absolute; top: 10px; right: 10px; background: rgba(0,230,118,0.8); color: #000; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 11px; z-index: 10; }
+        .card-info { padding: 15px; }
+        .card-id { font-size: 18px; font-weight: bold; color: var(--yellow); margin-bottom: 5px; }
+        .card-title { font-size: 13px; color: #888; height: 2.8em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+        
+        .tag-list { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px; position: relative; z-index: 20; }
+        .tag { font-size: 11px; padding: 2px 7px; border-radius: 4px; background: #222; color: #4fc3f7 !important; border: 1px solid #333; text-decoration: none; transition: 0.2s; }
+        .tag:hover { background: var(--accent); color: #fff !important; border-color: var(--accent); }
+        .tag.hair { border-color: #ff408166; }
+
+        .pagination { max-width: 1400px; margin: 40px auto; display: flex; justify-content: center; gap: 8px; }
+        .page-link { padding: 8px 15px; background: #111; color: #666; text-decoration: none; border: 1px solid #222; border-radius: 4px; }
+        .page-link.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    </style>
+</head>
+<body>
+    <div class="header-section">
+        <form class="search-form" action="/">
+            <input type="text" name="search" value="{{ q or '' }}">
+            <button type="submit" class="btn btn-search">Search</button>
+            <a href="/" class="btn btn-reset">Reset</a>
+            
+            <div class="filters">
+                <label><input type="checkbox" name="sub_only" value="1" {% if sub_only %}checked{% endif %} onchange="this.form.submit()"> Subtitle</label>
+                <label><input type="checkbox" name="hair_only" value="1" {% if hair_only %}checked{% endif %} onchange="this.form.submit()"> Heart</label>
+                <label><input type="checkbox" name="exclude_noteworthy_actors" value="1" {% if exclude_noteworthy_actors %}checked{% endif %} onchange="this.form.submit()"> Note</label>
+
+                <span style="margin-left: 20px; border-left: 1px solid #ccc; padding-left: 15px;">
+                    <label><input type="radio" name="sort" value="release_date" {% if sort == 'release_date' or not sort %}checked{% endif %} onchange="this.form.submit()"> Release</label>
+                    <label><input type="radio" name="sort" value="id" {% if sort == 'id' %}checked{% endif %} onchange="this.form.submit()"> Added</label>
+                </span>         
+            </div>
+        </form>
+    </div>
+
+    <div class="grid">
+        {% for i in items %}
+        <div class="card" onclick="if(!window.preventCardClick) location.href='/dvd/{{ i.id }}'; window.preventCardClick=false;" style="cursor: pointer;">
+            <div class="img-box">
+                <img src="/images/covers/{{ i.dvd_id }}" loading="lazy" 
+                     onerror="this.parentElement.classList.add('img-error');">
+                <div class="no-image-text">NO IMAGE</div>
+                {% if i.subtitle and i.subtitle != '0' %}<div class="sub-badge">SUB</div>{% endif %}
+            </div>
+            <div class="card-info">
+                <div class="card-id">{{ i.dvd_id }}</div>
+		<div class="card-title" style="text-align: right; color: #888; font-size: 13px;">{{ i.release_date }}</div>
+                <div class="tag-list">
+                    {% for a in i.actors %}
+                    <a href="/actor/{{ a.id }}" class="tag {% if a.hair and a.hair|int > 0 %}hair{% endif %}" 
+                       onclick="window.preventCardClick=true;">
+                        {{ a.name_ko }}{% if a.hair and a.hair|int > 0 %} ❤️{% endif %}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        {% for p in range(1, total_pages + 1) %}
+        <a href="/?page={{ p }}&search={{ q }}&sub_only={{ '1' if sub_only else '0' }}&hair_only={{ '1' if hair_only else '0' }}&exclude_noteworthy_actors={{ '1' if exclude_noteworthy_actors else '0' }}&sort={{ sort }}" 
+          class="page-link {% if p == page %}active{% endif %}">{{ p }}</a>
+        {% endfor %}
+    </div>
+</body>
+</html>
