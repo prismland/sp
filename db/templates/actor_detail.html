@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ actor.name_ko }}</title>
+    <style>
+        :root { --bg: #0a0a0a; --card: #161616; --accent: #0288d1; --text: #d1d1d1; --yellow: #ffc107; --border: #333; }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; }
+        .header-section { max-width: 1400px; margin: 0 auto 30px; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border); display: flex; align-items: center; gap: 20px; }
+        .search-form { flex: 1; display: flex; gap: 10px; align-items: center; }
+        input[type="text"] { flex: 1; background: #000; border: 1px solid var(--border); padding: 12px; border-radius: 6px; color: #fff; outline: none; }
+        .btn { padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; border: none; text-decoration: none; font-size: 14px; transition: 0.2s; display: inline-flex; align-items: center; justify-content: center; }
+        .btn-search { background: var(--accent); color: #fff; }
+        .btn-reset { background: #333; color: #aaa; }
+        .actor-info-card { max-width: 1400px; margin: 0 auto 30px; background: var(--card); padding: 30px; border-radius: 12px; border: 1px solid #222; }
+        .actor-header { display: flex; align-items: baseline; gap: 15px; margin-bottom: 20px; }
+        .actor-names-sub { color: #666; font-size: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        
+        .copy-btn { background: #333; color: #ccc; border: 1px solid #444; padding: 2px 8px; border-radius: 4px; font-size: 11px; cursor: pointer; transition: 0.2s; }
+        .copy-btn:active { background: var(--accent); color: #fff; }
+        
+        .actor-details-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 20px; padding: 15px 0; border-top: 1px solid #222; border-bottom: 1px solid #222; }
+        .detail-item { font-size: 14px; }
+        .detail-item label { color: #555; font-weight: bold; margin-right: 10px; text-transform: uppercase; }
+        .edit-section { display: flex; gap: 20px; margin-top: 20px; align-items: flex-start; }
+        .edit-group { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+        .edit-group label { color: #555; font-weight: bold; text-transform: uppercase; font-size: 12px; }
+        .edit-row { display: flex; gap: 8px; }
+        input.edit-input, textarea.edit-input { background: #000; border: 1px solid var(--border); border-radius: 4px; color: #ccc; padding: 8px; outline: none; font-family: inherit; }
+        input.edit-input { width: 60px; }
+        textarea.edit-input { flex: 1; height: 34px; resize: none; }
+        .btn-save { background: #333; color: #fff; padding: 0 15px; border-radius: 4px; cursor: pointer; border: none; font-size: 12px; font-weight: bold; }
+        .btn-save:hover { background: var(--accent); }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 25px; max-width: 1400px; margin: 0 auto; }
+        .card { background: var(--card); border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; border: 1px solid #222; transition: 0.3s; position: relative; display: block; }
+        .card:hover { transform: translateY(-8px); border-color: var(--accent); }
+        
+        .img-box { width: 100%; aspect-ratio: 18/26; background: #222; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        
+        /* 출연 작품 이미지도 오른쪽이 보이도록 설정 */
+        .img-box img { width: 100%; height: 100%; object-fit: cover; object-position: right center; }
+        
+        .no-image-text { display: none; color: #444; font-weight: bold; font-size: 20px; letter-spacing: 2px; }
+        .img-error img { display: none; }
+        .img-error .no-image-text { display: block; }
+    </style>
+</head>
+<body>
+    <div class="header-section">
+        <form class="search-form" action="/">
+            <input type="text" name="search" value="">
+            <button type="submit" class="btn btn-search">Search</button>
+            <a href="/" class="btn btn-reset">Home</a>
+        </form>
+    </div>
+    <div class="actor-info-card">
+        <div class="actor-header">
+            <h1 onclick="copyToClipboard('{{ actor.name_ko }}')" 
+                title="클릭하여 이름 복사"
+                style="
+                    color: var(--yellow); 
+                    margin: 0; 
+                    cursor: pointer; 
+                    display: inline-block; 
+                    transition: opacity 0.2s;"
+                onmouseover="this.style.opacity='0.8';"
+                onmouseout="this.style.opacity='1';">
+                {{ actor.name_ko }}{% if actor.hair and actor.hair|int > 0 %} ❤️{% endif %}
+            </h1>       
+            <div class="actor-names-sub">
+                {% if actor.name_jp %}
+                    <span>{{ actor.name_jp }}</span>
+                    <button class="copy-btn" onclick="copyToClipboard('{{ actor.name_jp }}')">Copy</button>
+                {% endif %}
+
+                {{ actor.name_en or '' }}
+
+                {# 세미콜론(;)을 분리하여 개별 배지로 출력 #}
+                {% if actor.name_alter %}
+                    <div class="alias-container" style="display: inline-block; margin-left: 10px;">
+                        {% for alias in actor.name_alter.strip(';').split(';') %}
+                            {% if alias %}
+                            <span class="alias-tag" 
+                                onclick="copyToClipboard('{{ alias }}')" 
+                                title="클릭하여 복사"
+                                style="
+                                    font-size: 0.85em;
+                                    color: #555;
+                                    background-color: #f0f0f0;
+                                    border: 1px solid #ddd;
+                                    padding: 2px 8px;
+                                    margin-right: 4px;
+                                    border-radius: 12px;
+                                    display: inline-block;
+                                    line-height: 1.2;
+                                    cursor: pointer;
+                                    transition: all 0.2s;"
+                                onmouseover="this.style.backgroundColor='#e0e0e0'; this.style.borderColor='#bbb';"
+                                onmouseout="this.style.backgroundColor='#f0f0f0'; this.style.borderColor='#ddd';">
+                                {{ alias }}
+                            </span>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+        </div>
+        <div class="actor-details-grid">
+            <div class="detail-item"><label>Height</label><span>{{ actor.height or '' }}</span></div>
+            <div class="detail-item"><label>Cup</label><span>{{ actor.cup or '' }}</span></div>
+            <div class="detail-item"><label>Birth</label><span>{{ actor.birth or '' }}</span></div>
+            <div class="detail-item"><label>Debut</label><span>{{ actor.debut or '' }}</span></div>
+        </div>
+        <div class="edit-section">
+            <div class="edit-group" style="flex: 0 0 auto;">
+                <label>Hair</label>
+                <div class="edit-row">
+                    <input type="text" id="actorHair" class="edit-input" value="{{ actor.hair or '' }}">
+                    <button class="btn-save" onclick="saveActor({{ actor.id }})">Save</button>
+                </div>
+            </div>
+            <div class="edit-group">
+                <label>Note</label>
+                <div class="edit-row">
+                    <textarea id="actorNote" class="edit-input">{{ actor.note or '' }}</textarea>
+                    <button class="btn-save" onclick="saveActor({{ actor.id }})">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid">
+        {% for i in dvds %}
+        <a href="/dvd/{{ i.id }}" class="card">
+            <div class="img-box">
+                <img src="/images/covers/{{ i.dvd_id }}" loading="lazy" 
+                     onerror="if(!this.getAttribute('data-tried-ext')){ 
+                                this.setAttribute('data-tried-ext', '1');
+                                {% if i.code %}
+                                this.src='https://c0.jdbstatic.com/covers/{{ i.code[:2].lower() }}/{{ i.code }}.jpg';
+                                {% else %}
+                                this.parentElement.classList.add('img-error');
+                                {% endif %}
+                              } else { 
+                                this.parentElement.classList.add('img-error'); 
+                              }">
+                <div class="no-image-text">NO IMAGE</div>
+                {% if i.subtitle and i.subtitle != '0' %}<div style="position: absolute; top: 10px; right: 10px; background: rgba(0,230,118,0.8); color: #000; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 11px;">SUB</div>{% endif %}
+            </div>
+            <div style="padding: 15px;">
+                <div style="font-size: 18px; font-weight: bold; color: var(--yellow); margin-bottom: 5px;">{{ i.dvd_id }}</div>
+                <div style="font-size: 13px; color: #888; height: 2.8em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">{{ i.title }}</div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    <script>
+        function copyToClipboard(text) {
+            const tempInput = document.createElement("input");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            // alert(text); <- 이 줄을 삭제하고 아래 토스트 기능을 사용합니다.
+            showToast("복사됨: " + text);
+        }
+
+        // 부드러운 알림 메시지 생성 함수
+        function showToast(message) {
+            let toast = document.getElementById("toast-container");
+            if (!toast) {
+                toast = document.createElement("div");
+                toast.id = "toast-container";
+                // 토스트 스타일링
+                Object.assign(toast.style, {
+                    position: "fixed",
+                    bottom: "30px",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    backgroundColor: "rgba(0, 0, 0, 0.7)",
+                    color: "#fff",
+                    padding: "10px 20px",
+                    borderRadius: "20px",
+                    fontSize: "0.9em",
+                    zIndex: "1000",
+                    transition: "opacity 0.5s",
+                    opacity: "0"
+                });
+                document.body.appendChild(toast);
+            }
+            
+            toast.innerText = message;
+            toast.style.opacity = "1";
+
+            // 1.5초 후 자동으로 사라짐
+            setTimeout(() => {
+                toast.style.opacity = "0";
+            }, 1500);
+        }
+
+
+        function saveActor(id) {
+            const hair = document.getElementById('actorHair').value;
+            const note = document.getElementById('actorNote').value;
+            fetch('/update_actor', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({id: id, hair: hair, note: note})
+            });
+        }
+    </script>
+</body>
+</html>
