@@ -48,8 +48,8 @@ HamoniKR https://hamonikr.org/
 #Tailscale http://bkim-2bay.beago-truck.ts.net/sp
 
 > Tools
-🤖GAI[L] https://gemini.google.com/app
-#GAI[L] https://claude.ai/new
+♊GAI[L] https://gemini.google.com/app
+🎇GAI[L] https://claude.ai/new
 #GAI https://chatgpt.com/
 GitHub[L] https://github.com/prismland
 🔤Translator https://papago.naver.com/?sk=auto&tk=ko
