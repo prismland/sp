@@ -25,7 +25,7 @@
 
 > Tech
 🐧DistroWatch https://distrowatch.com/
-🇰🇷HamoniKR https://hamonikr.org/
+Hamoni🇰🇷 https://hamonikr.org/
 🧭IP https://ip.pe.kr/
 #Local http://192.168.0.1:800/ A6004NS-시스템관리-기타설정-공유기관리포트[L]
 #Local http://192.168.0.200/ A3004NS-네트워크관리-내부네트워크설정-내부IP주소[L]
@@ -101,7 +101,7 @@ Webtoon[U] https://newtoki469.com/
 #iChart https://ichart.instiz.net/
 #K-pop[T] https://www.kpopmonster.jp/?paged=1
 #K-Ent[T] https://www.wowkorea.jp/
-WUK[L] https://www.withukor.com/schedule
+🗓️WUK[L] https://www.withukor.com/schedule
 🎰Lottery[L] https://www.dhlottery.co.kr/main
 #Bet[L] https://www.betman.co.kr/?m=
 #Bet[L] http://www.betman.co.kr/?m=
