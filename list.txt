@@ -17,7 +17,7 @@ MSN https://www.msn.com/ko-kr?ocid=wn_startbrowsing
 #MSN https://www.msn.com/ko-kr/feed?ocid=wn_startbrowsing
 #MSN https://www.msn.com/ko-kr/feed?ocid=winp1taskbar&cvid=dabec34665064328a028ecebbfbc78b8
 #MSN https://www.msn.com/ko-kr/news
-HotNow https://arca.live/b/namuhotnow/
+🔥HotNow https://arca.live/b/namuhotnow/
 🌤️Weather https://www.weather.go.kr/w/index.do#dong/4817074000/35.156944/128.10883/%EA%B2%BD%EC%83%81%EB%82%A8%EB%8F%84%20%EC%A7%84%EC%A3%BC%EC%8B%9C%20%EA%B0%80%ED%98%B8%EB%8F%99/SEL/%EA%B0%80%ED%98%B8%EB%8F%99
 #Weather https://www.weather.go.kr/w/index.do
 🍱Cafeteria https://www.gnu.ac.kr/main/ad/fm/foodmenu/selectFoodMenuView.do?mi=1341&restSeq=5
@@ -89,7 +89,7 @@ GitHub[L] https://github.com/prismland
 📖E-Book[L] https://ridibooks.com/ebook/recommendation
 
 > Enter
-Cartoon[U] https://manatoki469.net/
+🖼️Cartoon[U] https://manatoki469.net/
 Webtoon[U] https://newtoki469.com/
 #Torrent[U] https://torrentqq406.com/
 #Torrent[U] https://www.todawa156.site/home.php
@@ -166,7 +166,7 @@ GF https://www.gravurefit.com/av/
 DY  https://avdanyuwiki.com/tag/yuduru/
 #DY	https://avdanyuwiki.com/tag/%E7%B5%90%E5%9F%8E%E7%B5%90%E5%BC%A6/ DY-YZR
 #DY https://avdanyuwiki.com/tag/%E3%82%BF%E3%83%A9%E3%82%AA/ DY-TRO
-P1[T] http://www.playno1.com/portal.php?mod=list&catid=78
+📰P1[T] http://www.playno1.com/portal.php?mod=list&catid=78
 #Sort[T] https://www.erokin.com/
 JT https://javtrailers.com/videos
 #JT https://javtrailers.com/ja/videos?page=1
@@ -177,4 +177,4 @@ ST https://subtitlecat.com/
 #ST https://www.subtitlecat.com/
 2b http://bkim-2bay.beago-truck.ts.net:5000/
 AI[U] https://today-sports7.com/bbs/board.php?bo_table=AI
-14[U] https://1004ak.com/
+🖼️14[U] https://1004ak.com/
