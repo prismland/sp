@@ -25,7 +25,7 @@
 
 > Tech
 🐧DistroWatch https://distrowatch.com/
-HamoniKR https://hamonikr.org/
+🇰🇷HamoniKR https://hamonikr.org/
 🧭IP https://ip.pe.kr/
 #Local http://192.168.0.1:800/ A6004NS-시스템관리-기타설정-공유기관리포트[L]
 #Local http://192.168.0.200/ A3004NS-네트워크관리-내부네트워크설정-내부IP주소[L]
@@ -51,7 +51,7 @@ HamoniKR https://hamonikr.org/
 ♊GAI[L] https://gemini.google.com/app
 🎇GAI[L] https://claude.ai/new
 #GAI https://chatgpt.com/
-GitHub[L] https://github.com/prismland
+🗃️GitHub[L] https://github.com/prismland
 🔤Translator https://papago.naver.com/?sk=auto&tk=ko
 #Translator https://translate.google.com/?sl=auto&tl=ko&op=translate
 📧E-Mail[L] https://mail.naver.com/v2/folders/-1/unread
@@ -176,5 +176,5 @@ OJ https://onejav.com/
 NJ https://www.nanojav.com/
 🔤ST https://subtitlecat.com/
 #ST https://www.subtitlecat.com/
-AI[U] https://today-sports7.com/bbs/board.php?bo_table=AI
 🖼️14[U] https://1004ak.com/
+AI[U] https://today-sports7.com/bbs/board.php?bo_table=AI
