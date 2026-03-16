@@ -25,7 +25,7 @@
 
 > Tech
 🐧DistroWatch https://distrowatch.com/
-🇰🇷HamoniKR https://hamonikr.org/
+HamoniKR https://hamonikr.org/
 🧭IP https://ip.pe.kr/
 #Local http://192.168.0.1:800/ A6004NS-시스템관리-기타설정-공유기관리포트[L]
 #Local http://192.168.0.200/ A3004NS-네트워크관리-내부네트워크설정-내부IP주소[L]
@@ -166,15 +166,15 @@ GF https://www.gravurefit.com/av/
 DY  https://avdanyuwiki.com/tag/yuduru/
 #DY	https://avdanyuwiki.com/tag/%E7%B5%90%E5%9F%8E%E7%B5%90%E5%BC%A6/ DY-YZR
 #DY https://avdanyuwiki.com/tag/%E3%82%BF%E3%83%A9%E3%82%AA/ DY-TRO
-2b http://bkim-2bay.beago-truck.ts.net:5000/
+2B http://bkim-2bay.beago-truck.ts.net:5000/
 📰P1[T] http://www.playno1.com/portal.php?mod=list&catid=78
 #Sort[T] https://www.erokin.com/
-JT https://javtrailers.com/videos
+🎞️JT https://javtrailers.com/videos
 #JT https://javtrailers.com/ja/videos?page=1
 💾AG[U] https://avgosu95.com/
 OJ https://onejav.com/
 NJ https://www.nanojav.com/
-ST https://subtitlecat.com/
+🔤ST https://subtitlecat.com/
 #ST https://www.subtitlecat.com/
 AI[U] https://today-sports7.com/bbs/board.php?bo_table=AI
 🖼️14[U] https://1004ak.com/
