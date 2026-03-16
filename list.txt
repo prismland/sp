@@ -3,8 +3,8 @@
 #NaverTV https://tv.naver.com/
 📽️VOD[U] https://tvwiki6.net/
 #VOD[U] https://www.somsatangv.xyz/index.php?mid=yenengsisa
-Broadcast[U] https://www.hulk24.com/broad.php
-📡Table[L] https://search.naver.com/search.naver?where=nexearch&sm=top_sly.hst&fbm=0&acr=1&ie=utf8&query=TV%ED%8E%B8%EC%84%B1%ED%91%9C&ackey=hedwulm9
+📡Broadcast[U] https://www.hulk24.com/broad.php
+🗓️Table[L] https://search.naver.com/search.naver?where=nexearch&sm=top_sly.hst&fbm=0&acr=1&ie=utf8&query=TV%ED%8E%B8%EC%84%B1%ED%91%9C&ackey=hedwulm9
 #Table[L] https://search.naver.com/search.naver?where=nexearch&query=tv%ED%8E%B8%EC%84%B1%ED%91%9C&sm=top_tsw&fbm=1&acr=1&acq=TV&qdt=0&ie=utf8
 
 > News
@@ -13,7 +13,7 @@ ScoreBoard https://m.sports.naver.com/scoreboard/index
 📰News https://news.daum.net/world
 #Google https://news.google.com/home?hl=ko&gl=KR&ceid=KR:ko
 #Google https://news.google.com/foryou?hl=ko&gl=KR&ceid=KR:ko
-MSN https://www.msn.com/ko-kr?ocid=wn_startbrowsing
+🦋MSN https://www.msn.com/ko-kr?ocid=wn_startbrowsing
 #MSN https://www.msn.com/ko-kr/feed?ocid=wn_startbrowsing
 #MSN https://www.msn.com/ko-kr/feed?ocid=winp1taskbar&cvid=dabec34665064328a028ecebbfbc78b8
 #MSN https://www.msn.com/ko-kr/news
@@ -21,7 +21,7 @@ MSN https://www.msn.com/ko-kr?ocid=wn_startbrowsing
 🌤️Weather https://www.weather.go.kr/w/index.do#dong/4817074000/35.156944/128.10883/%EA%B2%BD%EC%83%81%EB%82%A8%EB%8F%84%20%EC%A7%84%EC%A3%BC%EC%8B%9C%20%EA%B0%80%ED%98%B8%EB%8F%99/SEL/%EA%B0%80%ED%98%B8%EB%8F%99
 #Weather https://www.weather.go.kr/w/index.do
 🍱Cafeteria https://www.gnu.ac.kr/main/ad/fm/foodmenu/selectFoodMenuView.do?mi=1341&restSeq=5
-Wiki https://namu.wiki/w/%EB%82%98%EB%AC%B4%EC%9C%84%ED%82%A4:%EB%8C%80%EB%AC%B8
+ℹ️Wiki https://namu.wiki/w/%EB%82%98%EB%AC%B4%EC%9C%84%ED%82%A4:%EB%8C%80%EB%AC%B8
 
 > Tech
 🖥️DistroWatch https://distrowatch.com/
