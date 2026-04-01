@@ -1,4 +1,4 @@
-> Play
+> Play & Edu
 📺YouTube[L] https://www.youtube.com/
 #NaverTV https://tv.naver.com/
 📽️VOD[U] https://tvwiki12.net/
@@ -6,59 +6,6 @@
 📡Broadcast[U] https://www.hulk24.com/broad.php
 🗓️Table[L] https://search.naver.com/search.naver?where=nexearch&sm=top_sly.hst&fbm=0&acr=1&ie=utf8&query=TV%ED%8E%B8%EC%84%B1%ED%91%9C&ackey=hedwulm9
 #Table[L] https://search.naver.com/search.naver?where=nexearch&query=tv%ED%8E%B8%EC%84%B1%ED%91%9C&sm=top_tsw&fbm=1&acr=1&acq=TV&qdt=0&ie=utf8
-
-> News
-🏟️ScoreBoard https://m.sports.naver.com/scoreboard/index
-#ScoreBoard https://sports.news.naver.com/scoreboard/index.nhn
-📰News https://news.daum.net/world
-#Google https://news.google.com/home?hl=ko&gl=KR&ceid=KR:ko
-#Google https://news.google.com/foryou?hl=ko&gl=KR&ceid=KR:ko
-🦋MSN https://www.msn.com/ko-kr?ocid=wn_startbrowsing
-#MSN https://www.msn.com/ko-kr/feed?ocid=wn_startbrowsing
-#MSN https://www.msn.com/ko-kr/feed?ocid=winp1taskbar&cvid=dabec34665064328a028ecebbfbc78b8
-#MSN https://www.msn.com/ko-kr/news
-🔥HotNow https://arca.live/b/namuhotnow/
-🌤️Weather https://www.weather.go.kr/w/index.do#dong/4817074000/35.156944/128.10883/%EA%B2%BD%EC%83%81%EB%82%A8%EB%8F%84%20%EC%A7%84%EC%A3%BC%EC%8B%9C%20%EA%B0%80%ED%98%B8%EB%8F%99/SEL/%EA%B0%80%ED%98%B8%EB%8F%99
-#Weather https://www.weather.go.kr/w/index.do
-🍱Cafeteria https://www.gnu.ac.kr/main/ad/fm/foodmenu/selectFoodMenuView.do?mi=1341&restSeq=5
-ℹ️Wiki https://namu.wiki/w/%EB%82%98%EB%AC%B4%EC%9C%84%ED%82%A4:%EB%8C%80%EB%AC%B8
-
-> Tech
-🐧DistroWatch https://distrowatch.com/
-Hamoni🇰🇷 https://hamonikr.org/
-🧭IP https://ip.pe.kr/
-#Local http://192.168.0.1:800/ A6004NS-시스템관리-기타설정-공유기관리포트[L]
-#Local http://192.168.0.200/ A3004NS-네트워크관리-내부네트워크설정-내부IP주소[L]
-#Local http://192.168.0.75/sp SP
-#Local http://192.168.0.75:9091/transmission/web/ Transmission[L]
-#Local http://192.168.0.58:9091/transmission/web/ Transmission[L]
-#Global http://182.31.166.4:8084/sp SP
-#Global http://182.31.166.4:9092/transmission/web/ Transmission[L]
-#Global http://182.31.166.4:8082/dav/ WebDAV[L]
-#Global http://182.31.166.4:2580/ A6004NS-보안기능-공유기접속/보안관리-원격관리포트[L]
-#Global https://182.31.166.4:9090/ Cockpit[L]
-#Domain http://bkim.iptime.org:8082/sp SP
-#Domain http://bkim.iptime.org:8082/t/im/ IM
-#Global http://182.31.166.4:8082/sp Home
-#Global http://182.31.166.4:8082/ Index
-#Global http://182.31.166.4:8082/lk Links
-#Global http://182.31.166.4:8082/t/ Tools
-#Global http://182.31.166.4:8082/a/ Pages
-#Tailscale http://100.71.117.93/sp
-#Tailscale http://bkim-2bay.beago-truck.ts.net/sp
-
-> Tools
-♊GAI[L] https://gemini.google.com/app
-🎇GAI[L] https://claude.ai/new
-#GAI https://chatgpt.com/
-🗃️GitHub[L] https://github.com/prismland
-🔤Translator https://papago.naver.com/?sk=auto&tk=ko
-#Translator https://translate.google.com/?sl=auto&tl=ko&op=translate
-📧E-Mail[L] https://mail.naver.com/v2/folders/-1/unread
-#E-Mail[L] https://mail.google.com/mail/u/0/#inbox
-#E-Mail[L] https://mail.daum.net/top/INBOX
-
-> Edu
 ✏️ComEdu[L] https://cafe.daum.net/swncomedu
 #ComEdu[L] https://cafe.daum.net/inforedu
 #ComEdu[L] https://cafe.daum.net/edurhi
@@ -87,6 +34,55 @@ Hamoni🇰🇷 https://hamonikr.org/
 #EducationalNotice https://www.gne.go.kr/user/bbs/BD_selectBbsList.do?q_bbsSn=1251
 #EducationalRecruit[L] https://edurecruit.go.kr/nxui/index.html
 📖E-Book[L] https://ridibooks.com/ebook/recommendation
+
+> News
+🏟️ScoreBoard https://m.sports.naver.com/scoreboard/index
+#ScoreBoard https://sports.news.naver.com/scoreboard/index.nhn
+📰News https://news.daum.net/world
+#Google https://news.google.com/home?hl=ko&gl=KR&ceid=KR:ko
+#Google https://news.google.com/foryou?hl=ko&gl=KR&ceid=KR:ko
+🦋MSN https://www.msn.com/ko-kr?ocid=wn_startbrowsing
+#MSN https://www.msn.com/ko-kr/feed?ocid=wn_startbrowsing
+#MSN https://www.msn.com/ko-kr/feed?ocid=winp1taskbar&cvid=dabec34665064328a028ecebbfbc78b8
+#MSN https://www.msn.com/ko-kr/news
+🔥HotNow https://arca.live/b/namuhotnow/
+🌤️Weather https://www.weather.go.kr/w/index.do#dong/4817074000/35.156944/128.10883/%EA%B2%BD%EC%83%81%EB%82%A8%EB%8F%84%20%EC%A7%84%EC%A3%BC%EC%8B%9C%20%EA%B0%80%ED%98%B8%EB%8F%99/SEL/%EA%B0%80%ED%98%B8%EB%8F%99
+#Weather https://www.weather.go.kr/w/index.do
+🍱Cafeteria https://www.gnu.ac.kr/main/ad/fm/foodmenu/selectFoodMenuView.do?mi=1341&restSeq=5
+ℹ️Wiki https://namu.wiki/w/%EB%82%98%EB%AC%B4%EC%9C%84%ED%82%A4:%EB%8C%80%EB%AC%B8
+
+> Tools & Tech
+♊GAI[L] https://gemini.google.com/app
+🎇GAI[L] https://claude.ai/new
+#GAI https://chatgpt.com/
+🗃️GitHub[L] https://github.com/prismland
+🔤Translator https://papago.naver.com/?sk=auto&tk=ko
+#Translator https://translate.google.com/?sl=auto&tl=ko&op=translate
+📧E-Mail[L] https://mail.naver.com/v2/folders/-1/unread
+#E-Mail[L] https://mail.google.com/mail/u/0/#inbox
+#E-Mail[L] https://mail.daum.net/top/INBOX
+🐧DistroWatch https://distrowatch.com/
+Hamoni🇰🇷 https://hamonikr.org/
+🧭IP https://ip.pe.kr/
+#Local http://192.168.0.1:800/ A6004NS-시스템관리-기타설정-공유기관리포트[L]
+#Local http://192.168.0.200/ A3004NS-네트워크관리-내부네트워크설정-내부IP주소[L]
+#Local http://192.168.0.75/sp SP
+#Local http://192.168.0.75:9091/transmission/web/ Transmission[L]
+#Local http://192.168.0.58:9091/transmission/web/ Transmission[L]
+#Global http://182.31.166.4:8084/sp SP
+#Global http://182.31.166.4:9092/transmission/web/ Transmission[L]
+#Global http://182.31.166.4:8082/dav/ WebDAV[L]
+#Global http://182.31.166.4:2580/ A6004NS-보안기능-공유기접속/보안관리-원격관리포트[L]
+#Global https://182.31.166.4:9090/ Cockpit[L]
+#Domain http://bkim.iptime.org:8082/sp SP
+#Domain http://bkim.iptime.org:8082/t/im/ IM
+#Global http://182.31.166.4:8082/sp Home
+#Global http://182.31.166.4:8082/ Index
+#Global http://182.31.166.4:8082/lk Links
+#Global http://182.31.166.4:8082/t/ Tools
+#Global http://182.31.166.4:8082/a/ Pages
+#Tailscale http://100.71.117.93/sp
+#Tailscale http://bkim-2bay.beago-truck.ts.net/sp
 
 > Enter
 🖼️Cartoon[U] https://manatoki469.net/
@@ -117,15 +113,14 @@ Hamoni🇰🇷 https://hamonikr.org/
 🏀Basketball https://kbl.or.kr/
 🏀LGSakers https://sakers.kbl.or.kr/
 
-> Community
+> ...
+#Community
 💬DCI https://gall.dcinside.com/mgallery/board/lists/?id=linux
 #DCI https://gall.dcinside.com/mgallery/board/lists?id=niziproject
 #DCI https://gall.dcinside.com/mgallery/board/lists/?id=produce101japans3
 #클라씨ⓜ 아일릿ⓜ 메이딘ⓜ 유니스(UNIS)ⓜ 일본활동여자아이돌ⓜ NMIXX(엔믹스)ⓜ
 #Damoang https://damoang.net/linux
 💬FMK https://www.fmkorea.com/
-
-> ...
 📽️TG[U] https://kr40.topgirl.co/video/category/JAV-2026
 📽️SG[U] https://kr85.sogirl.so/category/jpsub/
 #4K[U] https://kr31.4kjav.co/
