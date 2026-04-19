@@ -24,7 +24,6 @@
 
         .container {
             display: grid;
-            /* 버튼 최소 가로 너비를 130px -> 170px로 상향 조정 */
             grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
             gap: 12px;
             width: 98%;
@@ -55,7 +54,7 @@
             background-color: #161616;
             color: #efefef;
             text-decoration: none;
-            font-size: 0.88rem; /* 글자 크기를 살짝 줄여 더 많이 들어가게 조정 */
+            font-size: 0.88rem;
             font-weight: 400;
             border-radius: 6px;
             border: 1px solid #2a2a2a;
@@ -68,7 +67,6 @@
             transform: translateY(-1px);
         }
         
-        /* 텍스트 정렬 및 잘림 방지 보강 */
         .item-name { 
             flex-grow: 1; 
             text-align: center; 
@@ -76,7 +74,7 @@
             overflow: hidden; 
             text-overflow: ellipsis; 
             padding: 0 8px;
-            letter-spacing: -0.2px; /* 자간을 미세하게 좁힘 */
+            letter-spacing: -0.2px;
         }
         
         .icon-box { 
@@ -93,7 +91,6 @@
 
         @media (max-width: 480px) {
             #clock { font-size: 3rem; }
-            /* 모바일에서도 버튼이 너무 작아지지 않게 조정 */
             .container { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
         }
     </style>
@@ -433,14 +430,30 @@
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             document.getElementById('date').textContent = now.toLocaleDateString('en-US', options);
         }
+
         async function updateWeather() {
+            const apiKey = "e3a8c001ebfb94e9b545af6d4dcc3d15";
+            const cityId = "1846052";
+            const url = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${apiKey}`;
+
             try {
-                const response = await fetch('https://wttr.in/Jinju?format=%c+%C+%t+(Feels+%f)+%w');
-                let data = await response.text();
-                data = data.replace(/([0-9.]+)\s*km\/h/g, (m, p1) => (p1/3.6).toFixed(1) + "m/s");
-                document.getElementById('weather').textContent = "Jinju: " + data;
-            } catch (e) { document.getElementById('weather').textContent = "Weather unavailable"; }
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Weather API Error');
+                const json = await response.json();
+                
+                const desc = json.weather[0].description;
+                const temp = json.main.temp.toFixed(0);
+                const feels = json.main.feels_like.toFixed(0);
+                const wind = json.wind.speed.toFixed(1);
+                
+                // Jinju: [상태] [온도] (체감) [풍속] 형식
+                document.getElementById('weather').textContent = 
+                    `Jinju: ${desc} ${temp}°C (Feels ${feels}°C) ${wind}m/s`;
+            } catch (e) {
+                document.getElementById('weather').textContent = "Weather unavailable";
+            }
         }
+
         setInterval(updateClock, 1000);
         updateClock();
         updateWeather();
