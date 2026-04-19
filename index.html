@@ -20,7 +20,22 @@
         .header { text-align: center; margin-bottom: 25px; }
         #clock { font-size: 4.5rem; font-weight: 200; margin: 5px 0; letter-spacing: -2px; color: #fff; }
         #date { font-size: 1.1rem; color: #999; letter-spacing: 1px; }
-        #weather { font-size: 0.95rem; color: #bbb; margin-top: 10px; }
+        
+        /* 날씨 영역 스타일: 아이콘과 텍스트를 가로로 정렬 */
+        #weather { 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem; 
+            color: #bbb; 
+            margin-top: 5px; 
+        }
+        #weather img {
+            width: 40px; /* 아이콘 크기 조절 */
+            height: 40px;
+            margin-right: -5px; /* 텍스트와의 간격 조절 */
+            filter: drop-shadow(0 0 5px rgba(255,255,255,0.2)); /* 아이콘 가독성 보강 */
+        }
 
         .container {
             display: grid;
@@ -432,7 +447,7 @@
         }
 
         async function updateWeather() {
-            const apiKey = "e3a8c001ebfb94e9b545af6d4dcc3d15";
+            const apiKey = "MYKEY";
             const cityId = "1846052";
             const url = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${apiKey}`;
 
@@ -441,14 +456,18 @@
                 if (!response.ok) throw new Error('Weather API Error');
                 const json = await response.json();
                 
+                const iconCode = json.weather[0].icon;
                 const desc = json.weather[0].description;
                 const temp = json.main.temp.toFixed(0);
                 const feels = json.main.feels_like.toFixed(0);
                 const wind = json.wind.speed.toFixed(1);
                 
-                // Jinju: [상태] [온도] (체감) [풍속] 형식
-                document.getElementById('weather').textContent = 
-                    `Jinju: ${desc} ${temp}°C (Feels ${feels}°C) ${wind}m/s`;
+                // 아이콘 이미지 태그 생성 (OpenWeatherMap 제공 경로)
+                const iconHtml = `<img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="${desc}">`;
+                
+                // HTML로 삽입하여 아이콘과 텍스트를 함께 표시
+                document.getElementById('weather').innerHTML = 
+                    `${iconHtml} Jinju: ${desc} ${temp}°C (Feels ${feels}°C) ${wind}m/s`;
             } catch (e) {
                 document.getElementById('weather').textContent = "Weather unavailable";
             }
