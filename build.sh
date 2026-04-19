@@ -6,7 +6,7 @@ OUTPUT="index.html"
 INPUT="list.txt"
 
 # [설정] OpenWeatherMap API 키와 도시 ID
-API_KEY="MYKEY"
+API_KEY="e3a8c001ebfb94e9b545af6d4dcc3d15"
 CITY_ID="1846052"
 
 cat <<'EOF' > $OUTPUT
