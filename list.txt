@@ -50,6 +50,7 @@
 #Weather https://www.weather.go.kr/w/index.do
 🍱Cafeteria https://www.gnu.ac.kr/main/ad/fm/foodmenu/selectFoodMenuView.do?mi=1341&restSeq=5
 ℹ️Wiki https://namu.wiki/w/%EB%82%98%EB%AC%B4%EC%9C%84%ED%82%A4:%EB%8C%80%EB%AC%B8
+📈Finance https://www.google.com/finance/beta
 
 > Tools & Tech
 ♊GAI[L] https://gemini.google.com/app
