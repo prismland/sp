@@ -9,7 +9,7 @@ INPUT="list.txt"
 API_KEY="e3a8c001ebfb94e9b545af6d4dcc3d15"
 CITY_ID="1846052"
 
-cat <<'EOF' > $OUTPUT
+cat <<'EOF' >$OUTPUT
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -134,36 +134,78 @@ EOF
 TOTAL_SECTIONS=$(grep -c "^>" "$INPUT")
 CURRENT_SECTION=0
 while IFS= read -r line || [[ -n "$line" ]]; do
-    [[ "$line" =~ ^# ]] && continue
-    if [[ "$line" =~ ^\> ]]; then
-        ((CURRENT_SECTION++))
-        [ $CURRENT_SECTION -gt 1 ] && echo "    </div></details>" >> $OUTPUT
-        TITLE=$(echo "$line" | sed 's/^>//' | xargs)
-        STATE=$([ "$CURRENT_SECTION" -lt "$TOTAL_SECTIONS" ] && echo "open" || echo "")
-        echo "    <details $STATE><summary>$TITLE</summary><div class=\"container\">" >> $OUTPUT
-    elif [[ -z "$line" ]]; then
-        echo "        <div class=\"spacer\"></div>" >> $OUTPUT
-    else
-        name=$(echo "$line" | awk '{print $1}')
-        url=$(echo "$line" | awk '{print $2}')
-        icon_left=$(echo "$name" | grep -oP "^(\p{Emoji_Presentation}|\p{Emoji}\x{FE0F})(\x{200D}\p{Emoji})*" 2>/dev/null)
-        clean_name=${name#$icon_left}
-        icon_right=""
-        item_class="link-item"
-        if [[ "$clean_name" == *"[L]"* ]]; then icon_right="🔑"; clean_name=${clean_name//\[L\]/}; item_class="$item_class login-required"; fi
-        if [[ "$clean_name" == *"[T]"* ]]; then icon_right="${icon_right}🌐"; clean_name=${clean_name//\[T\]/}; fi
-        if [[ "$clean_name" == *"[U]"* ]]; then icon_right="${icon_right}⚠️"; clean_name=${clean_name//\[U\]/}; item_class="$item_class update-needed"; fi
-        echo "        <a href=\"$url\" class=\"$item_class\" target=\"_blank\" rel=\"noopener noreferrer\">" >> $OUTPUT
-        echo "            <span class=\"icon-box\">$icon_left</span>" >> $OUTPUT
-        echo "            <span class=\"item-name\">$clean_name</span>" >> $OUTPUT
-        echo "            <span class=\"icon-box\">$icon_right</span>" >> $OUTPUT
-        echo "        </a>" >> $OUTPUT
+  [[ "$line" =~ ^# ]] && continue
+  if [[ "$line" =~ ^\> ]]; then
+    ((CURRENT_SECTION++))
+    [ $CURRENT_SECTION -gt 1 ] && echo "    </div></details>" >>$OUTPUT
+    TITLE=$(echo "$line" | sed 's/^>//' | xargs)
+    STATE=$([ "$CURRENT_SECTION" -lt "$TOTAL_SECTIONS" ] && echo "open" || echo "")
+    echo "    <details $STATE><summary>$TITLE</summary><div class=\"container\">" >>$OUTPUT
+  elif [[ -z "$line" ]]; then
+    echo "        <div class=\"spacer\"></div>" >>$OUTPUT
+  else
+    name=$(echo "$line" | awk '{print $1}')
+    url=$(echo "$line" | awk '{print $2}')
+    icon_left=$(echo "$name" | grep -oP "^(\p{Emoji_Presentation}|\p{Emoji}\x{FE0F})(\x{200D}\p{Emoji})*" 2>/dev/null)
+    clean_name=${name#$icon_left}
+    icon_right=""
+    item_class="link-item"
+    if [[ "$clean_name" == *"[L]"* ]]; then
+      icon_right="🔑"
+      clean_name=${clean_name//\[L\]/}
+      item_class="$item_class login-required"
     fi
-done < "$INPUT"
-echo "    </div></details>" >> $OUTPUT
+    if [[ "$clean_name" == *"[T]"* ]]; then
+      icon_right="${icon_right}🌐"
+      clean_name=${clean_name//\[T\]/}
+    fi
+    if [[ "$clean_name" == *"[U]"* ]]; then
+      icon_right="${icon_right}⚠️"
+      clean_name=${clean_name//\[U\]/}
+      item_class="$item_class update-needed"
+    fi
+    echo "        <a href=\"$url\" class=\"$item_class\" target=\"_blank\" rel=\"noopener noreferrer\">" >>$OUTPUT
+    echo "            <span class=\"icon-box\">$icon_left</span>" >>$OUTPUT
+    echo "            <span class=\"item-name\">$clean_name</span>" >>$OUTPUT
+    echo "            <span class=\"icon-box\">$icon_right</span>" >>$OUTPUT
+    echo "        </a>" >>$OUTPUT
+  fi
+done <"$INPUT"
+echo "    </div></details>" >>$OUTPUT
+
+# ==========================================
+# [추가] 앱 설정용 config.json 자동 생성 로직
+# ==========================================
+CONFIG_OUTPUT="config.json"
+
+# 주석(#)으로 시작하지 않는 활성 줄에서 특정 키워드(TG, SG 등)를 찾아 URL(2번째 열)만 추출
+URL_TG=$(grep -E "^[^#].*TG\[U\]" "$INPUT" | awk '{print $2}' | head -n 1)
+URL_SG=$(grep -E "^[^#].*SG\[U\]" "$INPUT" | awk '{print $2}' | head -n 1)
+URL_DF=$(grep -E "^[^#].*DF\[U\]" "$INPUT" | awk '{print $2}' | head -n 1)
+URL_14=$(grep -E "^[^#].*14\[U\]" "$INPUT" | awk '{print $2}' | head -n 1)
+URL_VOD=$(grep -E "^[^#].*VOD\[U\]" "$INPUT" | awk '{print $2}' | head -n 1)
+URL_WT=$(grep -E "^[^#].*Webtoon" "$INPUT" | awk '{print $2}' | head -n 1)
+
+# JSON 파일 작성 (앱별로 사용할 데이터를 객체로 분리)
+cat <<EOF >"$CONFIG_OUTPUT"
+{
+  "dossier": {
+    "tg_url": "$URL_TG"
+  },
+  "avrowser": {
+    "tg_url": "$URL_TG",
+    "sg_url": "$URL_SG",
+    "df_url": "$URL_DF",
+    "14_url": "$URL_14",
+    "vod_url": "$URL_VOD",
+    "wt_url": "$URL_WT"
+  }
+}
+EOF
+# ==========================================
 
 # 자바스크립트 섹션: 아이콘 이미지 로직 추가
-cat <<EOF >> $OUTPUT
+cat <<EOF >>$OUTPUT
     <script>
         function updateClock() {
             const now = new Date();
