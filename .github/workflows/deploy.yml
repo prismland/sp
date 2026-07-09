@@ -3,10 +3,12 @@ name: Update Start Page
 on:
   push:
     branches:
-      - main  # 메인 브랜치에 어떤 변경사항이라도 생기면 실행
+      - main  # 메인 브랜치에 변경사항이 생기면 실행
 
 permissions:
   contents: write
+  pages: write      # GitHub Pages 배포를 위해 필요한 권한 추가
+  id-token: write   # GitHub Pages 배포를 위해 필요한 권한 추가
 
 jobs:
   build-and-deploy:
@@ -14,6 +16,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run build script
         run: |
@@ -25,6 +29,21 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add index.html config.json
-          # 변경사항이 없어도 오류로 처리하지 않음
-          git commit -m "Automated build" || exit 0 
+          git commit -m "Automated build" || echo "No changes to commit"
           git push
+
+      # ==========================================
+      # 여기서부터 실제 GitHub Pages 웹사이트로 배포하는 단계를 추가합니다.
+      # ==========================================
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # 현재 저장소의 루트(/) 디렉토리에 생성된 파일들을 업로드합니다.
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
