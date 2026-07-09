@@ -1,14 +1,17 @@
+# Version: 2026-03-08-v02 | Description: Perfect workflow for simple local push and visible artifacts
 name: Update Start Page
 
 on:
   push:
     branches:
-      - main  # 메인 브랜치에 변경사항이 생기면 실행
+      - main
+    paths:
+      - 'list.txt' # list.txt가 수정되어 올라올 때만 실행 (무한 루프 방지)
 
 permissions:
   contents: write
-  pages: write      # GitHub Pages 배포를 위해 필요한 권한 추가
-  id-token: write   # GitHub Pages 배포를 위해 필요한 권한 추가
+  pages: write
+  id-token: write
 
 jobs:
   build-and-deploy:
@@ -17,31 +20,38 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0 # 히스토리를 전부 가져와 안전하게 관리
 
       - name: Run build script
         run: |
           chmod +x build.sh
           ./build.sh
 
-      - name: Commit and Push changes
+      - name: Commit and Push changes safely
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # 생성된 두 파일을 스테이징합니다.
           git add index.html config.json
-          git commit -m "Automated build" || echo "No changes to commit"
-          git push
+          
+          # 변경사항이 있을 때만 커밋을 생성하고 원격에 푸시합니다.
+          if ! git diff --cached --quiet; then
+            git commit -m "Automated build: index.html & config.json"
+            
+            # 원격 저장소에 그새 다른 커밋이 생겼더라도 안전하게 병합 후 푸시하도록 처리
+            git pull origin main --rebase
+            git push origin main
+          else
+            echo "No changes to commit"
+          fi
 
-      # ==========================================
-      # 여기서부터 실제 GitHub Pages 웹사이트로 배포하는 단계를 추가합니다.
-      # ==========================================
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # 현재 저장소의 루트(/) 디렉토리에 생성된 파일들을 업로드합니다.
           path: '.'
 
       - name: Deploy to GitHub Pages
