@@ -1,15 +1,15 @@
-# Version: 2026-03-08-v02 | Description: Perfect workflow for simple local push and visible artifacts
+# Version: 2026-07-09-v01 | Description: Clean deployment workflow without bot push to avoid conflicts
+# Functions: build-and-deploy
+
 name: Update Start Page
 
 on:
   push:
     branches:
       - main
-    paths:
-      - 'list.txt' # list.txt가 수정되어 올라올 때만 실행 (무한 루프 방지)
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -19,32 +19,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # 히스토리를 전부 가져와 안전하게 관리
 
       - name: Run build script
         run: |
           chmod +x build.sh
           ./build.sh
-
-      - name: Commit and Push changes safely
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # 생성된 두 파일을 스테이징합니다.
-          git add index.html config.json
-          
-          # 변경사항이 있을 때만 커밋을 생성하고 원격에 푸시합니다.
-          if ! git diff --cached --quiet; then
-            git commit -m "Automated build: index.html & config.json"
-            
-            # 원격 저장소에 그새 다른 커밋이 생겼더라도 안전하게 병합 후 푸시하도록 처리
-            git pull origin main --rebase
-            git push origin main
-          else
-            echo "No changes to commit"
-          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
