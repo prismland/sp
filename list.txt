@@ -55,9 +55,9 @@
 > Tools & Tech
 ♊GAI[L] https://gemini.google.com/app
 🎇GAI[L] https://claude.ai/new
-#GAI https://chatgpt.com/
+💬GAI https://chatgpt.com/
 🗃️GitHub[L] https://github.com/prismland
-🔤Translator https://papago.naver.com/?sk=auto&tk=ko
+#🔤Translator https://papago.naver.com/?sk=auto&tk=ko
 #Translator https://translate.google.com/?sl=auto&tl=ko&op=translate
 📧E-Mail[L] https://mail.naver.com/v2/folders/-1/unread
 #E-Mail[L] https://mail.google.com/mail/u/0/#inbox
@@ -133,7 +133,7 @@ Hamoni🇰🇷 https://hamonikr.org/
 #YBR[U} https://yaburi65.com/
 #AVS[U] https://07.avsee.ru/
 #4K[U] https://kr31.4kjav.co/
-📽️12[U] https://123av.com/ko
+#📽️12[U] https://123av.com/ko
 #12[U] https://123av.ws/ko
 #12[U] https://123av.gg/ko
 #12[U] https://1av.to/ko/dm9
@@ -142,15 +142,16 @@ Hamoni🇰🇷 https://hamonikr.org/
 #MA[U] https://missav.ws/dm16/ko
 #MA[U] https://missav.ws/dm210/ko
 #MA[U] https://missav123.com/dm515/ko
-🎞️JT https://javtrailers.com/videos
+#🎞️JT https://javtrailers.com/videos
 #JT https://javtrailers.com/ja/videos?page=1
-📽️DF[U] https://kr16.ddal.xyz/
+📽️DF[U] https://kr17.ddal.xyz/
+#DF[U] https://kr.딸플릭스.net/
 #YA[U] https://yatv1.com/
 #YA[U] https://yatv3.net/" target="_blank">YT-U</a> -->
 #YA[U] https://yatv.red/" target="_blank">YT-history</a> -->
 #YA[U] https://yatv.pro/%EC%9D%BC%EB%B3%B8%EC%95%BC%EB%8F%99/%EC%95%BC%EB%8F%99%EA%B2%80%EC%83%89/1/STARS
-📽️SB https://spankbang.com/
-#SB https://spankbang.party/
+📽️SB https://spankbang.party/
+#SB https://spankbang.com/
 📡SC[U] https://ko.stripchat.com/
 #SC[U] https://ko.stripchat.com/
 #SC[U] https://ko.stripchats.io/
@@ -180,7 +181,7 @@ Hamoni🇰🇷 https://hamonikr.org/
 #DY	https://avdanyuwiki.com/tag/%E7%B5%90%E5%9F%8E%E7%B5%90%E5%BC%A6/ DY-YZR
 #DY https://avdanyuwiki.com/tag/%E3%82%BF%E3%83%A9%E3%82%AA/ DY-TRO
 📇PJ https://penijoy.com/
-📇2B http://bkim-2bay.beago-truck.ts.net:5000/
+📇2B http://bkim-2bay.beago-truck.ts.net/dn/
 📰P1[T] http://www.playno1.com/portal.php?mod=list&catid=78
 #Sort[T] https://www.erokin.com/
 🔤ST https://subtitlecat.com/
@@ -191,4 +192,4 @@ Hamoni🇰🇷 https://hamonikr.org/
 #AD https://avgood.com/k/
 🖼️14[U] https://1004xk.com/
 🖼️AI[U] https://today-sports10.com/bbs/board.php?bo_table=AI
-🖼️FAP https://ko.idolfap.com/
+#🖼️FAP https://ko.idolfap.com/
