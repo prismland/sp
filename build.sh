@@ -181,6 +181,7 @@ CONFIG_OUTPUT="config.json"
 # 주석(#)으로 시작하지 않는 활성 줄에서 특정 키워드(TG, SG 등)를 찾아 URL(2번째 열)만 추출
 URL_TG=$(grep -E "^[^#].*TG\[U\]" "$INPUT" | awk '{print $2}' | head -n 1)
 URL_SG=$(grep -E "^[^#].*SG\[U\]" "$INPUT" | awk '{print $2}' | head -n 1)
+URL_YK=$(grep -E "^[^#].*YK\[U\]" "$INPUT" | awk '{print $2}' | head -n 1)
 URL_DF=$(grep -E "^[^#].*DF\[U\]" "$INPUT" | awk '{print $2}' | head -n 1)
 URL_14=$(grep -E "^[^#].*14\[U\]" "$INPUT" | awk '{print $2}' | head -n 1)
 URL_VOD=$(grep -E "^[^#].*VOD\[U\]" "$INPUT" | awk '{print $2}' | head -n 1)
@@ -194,6 +195,7 @@ cat <<EOF >"$CONFIG_OUTPUT"
   },
   "avrowser": {
     "tg_url": "$URL_TG",
+    "yk_url": "$URL_YK",
     "sg_url": "$URL_SG",
     "df_url": "$URL_DF",
     "14_url": "$URL_14",
