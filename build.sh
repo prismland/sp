@@ -184,8 +184,10 @@ URL_SG=$(grep -E "^[^#].*SG\[U\]" "$INPUT" | awk '{print $2}' | head -n 1)
 URL_YK=$(grep -E "^[^#].*YK\[U\]" "$INPUT" | awk '{print $2}' | head -n 1)
 URL_DF=$(grep -E "^[^#].*DF\[U\]" "$INPUT" | awk '{print $2}' | head -n 1)
 URL_14=$(grep -E "^[^#].*14\[U\]" "$INPUT" | awk '{print $2}' | head -n 1)
-URL_VOD=$(grep -E "^[^#].*VOD\[U\]" "$INPUT" | awk '{print $2}' | head -n 1)
 URL_WT=$(grep -E "^[^#].*Webtoon" "$INPUT" | awk '{print $2}' | head -n 1)
+URL_VOD=$(grep -E "^[^#].*VOD\[U\]" "$INPUT" | awk '{print $2}' | head -n 1)
+URL_SF=$(grep -E "^[^#].*SF" "$INPUT" | awk '{print $2}' | head -n 1)
+URL_RS=$(grep -E "^[^#].*RS" "$INPUT" | awk '{print $2}' | head -n 1)
 
 # JSON 파일 작성 (앱별로 사용할 데이터를 객체로 분리)
 cat <<EOF >"$CONFIG_OUTPUT"
@@ -199,8 +201,10 @@ cat <<EOF >"$CONFIG_OUTPUT"
     "sg_url": "$URL_SG",
     "df_url": "$URL_DF",
     "14_url": "$URL_14",
+    "wt_url": "$URL_WT",
     "vod_url": "$URL_VOD",
-    "wt_url": "$URL_WT"
+    "sf_url": "$URL_SF",
+    "rs_url": "$URL_RS"
   }
 }
 EOF
