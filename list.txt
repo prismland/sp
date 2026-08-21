@@ -46,7 +46,7 @@
 #MSN https://www.msn.com/ko-kr/feed?ocid=winp1taskbar&cvid=dabec34665064328a028ecebbfbc78b8
 #MSN https://www.msn.com/ko-kr/news
 🔥HotNow https://arca.live/b/namuhotnow/
-📈Finance https://www.google.com/finance/beta
+📈Finance[L] https://www.google.com/finance/beta
 🌤️Weather https://www.weather.go.kr/w/index.do#dong/4817074000/35.156944/128.10883/%EA%B2%BD%EC%83%81%EB%82%A8%EB%8F%84%20%EC%A7%84%EC%A3%BC%EC%8B%9C%20%EA%B0%80%ED%98%B8%EB%8F%99/SEL/%EA%B0%80%ED%98%B8%EB%8F%99
 #Weather https://www.weather.go.kr/w/index.do
 🍱Cafeteria https://www.gnu.ac.kr/main/ad/fm/foodmenu/selectFoodMenuView.do?mi=1341&restSeq=5
@@ -54,8 +54,8 @@
 
 > Tools & Tech
 ♊GAI[L] https://gemini.google.com/app
-🎇GAI[L] https://claude.ai/new
 💬GAI https://chatgpt.com/
+#🎇GAI[L] https://claude.ai/new
 🗃️GitHub[L] https://github.com/prismland
 #🔤Translator https://papago.naver.com/?sk=auto&tk=ko
 #Translator https://translate.google.com/?sl=auto&tl=ko&op=translate

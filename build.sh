@@ -188,6 +188,9 @@ URL_WT=$(grep -E "^[^#].*Webtoon" "$INPUT" | awk '{print $2}' | head -n 1)
 URL_VOD=$(grep -E "^[^#].*VOD\[U\]" "$INPUT" | awk '{print $2}' | head -n 1)
 URL_SF=$(grep -E "^[^#].*SF" "$INPUT" | awk '{print $2}' | head -n 1)
 URL_RS=$(grep -E "^[^#].*RS" "$INPUT" | awk '{print $2}' | head -n 1)
+URL_HK=$(grep -E "^[^#].*HK" "$INPUT" | awk '{print $2}' | head -n 1)
+URL_P1=$(grep -E "^[^#].*P1" "$INPUT" | awk '{print $2}' | head -n 1)
+URL_AI=$(grep -E "^[^#].*AI" "$INPUT" | awk '{print $2}' | head -n 1)
 
 # JSON 파일 작성 (앱별로 사용할 데이터를 객체로 분리)
 cat <<EOF >"$CONFIG_OUTPUT"
@@ -201,7 +204,10 @@ cat <<EOF >"$CONFIG_OUTPUT"
     "sg_url": "$URL_SG",
     "df_url": "$URL_DF",
     "14_url": "$URL_14",
+    "ai_url": "$URL_AI",
+    "P1_url": "$URL_P1",
     "wt_url": "$URL_WT",
+    "hk_url": "$URL_HK",
     "vod_url": "$URL_VOD",
     "sf_url": "$URL_SF",
     "rs_url": "$URL_RS"
