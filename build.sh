@@ -207,7 +207,7 @@ cat <<EOF >"$CONFIG_OUTPUT"
     "df_url": "$URL_DF",
     "14_url": "$URL_14",
     "ai_url": "$URL_AI",
-    "P1_url": "$URL_P1",
+    "p1_url": "$URL_P1",
     "tk_url": "$URL_TK",
     "hk_url": "$URL_HK",
     "vod_url": "$URL_VOD",
